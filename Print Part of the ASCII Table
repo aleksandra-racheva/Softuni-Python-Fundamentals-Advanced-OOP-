@@ -1,0 +1,5 @@
+top_num = int(input())
+bot_num = int(input())
+
+for num in range(top_num, bot_num + 1):
+    print(chr(num), end=" ")
