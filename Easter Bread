@@ -1,0 +1,16 @@
+budget = float(input())
+price_per_kg_flour = float(input())
+
+price_eggs = price_per_kg_flour * 0.75
+price_milk = (price_per_kg_flour + price_per_kg_flour * 0.25) / 4
+
+price_per_bread = price_per_kg_flour + price_eggs + price_milk
+num_loafs = int(budget / price_per_bread)
+leftover_money = budget % price_per_bread
+eggs = num_loafs * 3
+
+for loaf in range(1, num_loafs + 1):
+    if loaf % 3 == 0:
+        eggs -= loaf - 2
+
+print(f"You made {num_loafs} loaves of Easter bread! Now you have {eggs} eggs and {leftover_money:.2f}BGN left.")
