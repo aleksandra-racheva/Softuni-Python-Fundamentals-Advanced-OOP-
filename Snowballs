@@ -1,0 +1,15 @@
+num_of_snowballs = int(input())
+value = 0
+snowball_data = ""
+for _ in range(1, num_of_snowballs + 1):
+    weight = int(input())
+    time_to_target = int(input())
+    quality = int(input())
+
+    snowball_value = (weight / time_to_target) ** quality
+
+    if snowball_value > value:
+        value = snowball_value
+        snowball_data = f"{weight} : {time_to_target} = {int(value)} ({quality})"
+
+print(snowball_data)
