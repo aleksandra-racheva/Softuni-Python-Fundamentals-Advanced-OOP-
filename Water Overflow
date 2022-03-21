@@ -1,0 +1,13 @@
+num_of_lines = int(input())
+max = 0
+for _ in range(num_of_lines):
+    liters_of_water = int(input())
+    if max < 255:
+        max += liters_of_water
+        if max > 255:
+            print("Insufficient capacity!")
+            max -= liters_of_water
+        else:
+            continue
+
+print(max)
