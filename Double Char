@@ -1,0 +1,5 @@
+str = input()
+
+for i in range(len(str)):
+    ch = str[i] * 2
+    print(ch, end="")
