@@ -1,0 +1,11 @@
+line = input()
+listy = []
+current_emoji = ""
+
+for ch in range(len(line)):
+    if line[ch] == ":":
+        current_emoji = line[ch] + line[ch + 1]
+        listy.append(current_emoji)
+
+result = "\n".join(listy)
+print(result)
