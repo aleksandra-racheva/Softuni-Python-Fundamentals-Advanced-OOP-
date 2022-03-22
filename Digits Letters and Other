@@ -1,0 +1,17 @@
+string = input()
+
+digits = ""
+characters = ""
+others = ""
+
+for ch in string:
+    if ch.isdigit():
+        digits += ch
+    elif ch.isalpha():
+        characters += ch
+    else:
+        others += ch
+
+print(digits)
+print(characters)
+print(others)
