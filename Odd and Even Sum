@@ -1,0 +1,17 @@
+initial_string = input()
+
+
+def odd_and_even(initial_string):
+    even_list = []
+    odd_list = list()
+    for i in initial_string:
+        if int(i) % 2 == 0:
+            even_list.append(int(i))
+        else:
+            odd_list.append(int(i))
+
+    sum_even = sum(even_list)
+    sum_odd = sum(odd_list)
+    print(f"Odd sum = {sum_odd}, Even sum = {sum_even}")
+
+odd_and_even(initial_string)
