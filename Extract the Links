@@ -1,0 +1,8 @@
+import re
+line = input()
+regex = r'www\.[A-Za-z0-9]+(-[a-zA-Z0-9]+)*(\.[a-z]+)+'
+while len(line) > 0:
+    text = re.finditer(regex, line)
+    for i in text:
+        print(i.group())
+    line = input()
