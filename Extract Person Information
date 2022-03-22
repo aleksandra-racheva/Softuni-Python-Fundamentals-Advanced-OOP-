@@ -1,0 +1,15 @@
+num = int(input())
+
+for _ in range(num):
+    string = input()
+    name_first_index = string.find("@") + 1
+    name_last_index = string.find("|")
+    age_first_index = string.find("#") + 1
+    age_last_index = string.find("*")
+    name = ""
+    age = ""
+    for x in range(name_first_index, name_last_index):
+        name += string[x]
+    for y in range(age_first_index, age_last_index):
+        age += string[y]
+    print(f"{name} is {age} years old.")
