@@ -1,0 +1,36 @@
+initial_list = input().split("@")
+neighborhood = list(map(int, initial_list))
+command = input()
+index = 0
+mission_successful = False
+
+while True:
+    if command == "Love!":
+        break
+    current = command.split(" ")
+    length = current[1]
+    index += int(length)
+    if index >= len(neighborhood):
+        index = 0
+    if neighborhood[index] >= 2:
+        neighborhood[index] -= 2
+        if neighborhood[index] == 0:
+            print(f"Place {index} has Valentine's day.")
+    else:
+        print(f"Place {index} already had Valentine's day.")
+    if sum(neighborhood) == 0:
+        mission_successful = True
+
+    command = input()
+
+count_of_fails = 0
+
+print(f"Cupid's last position was {index}.")
+
+if not mission_successful:
+    for z in neighborhood:
+        if z != 0:
+            count_of_fails += 1
+    print(f"Cupid has failed {count_of_fails} places.")
+else:
+    print("Mission was successful.")
