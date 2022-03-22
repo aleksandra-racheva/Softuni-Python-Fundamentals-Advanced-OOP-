@@ -1,0 +1,19 @@
+line = input().split(" ")
+product_list = {}
+
+while len(line) > 1:
+    name = line[0]
+    price = float(line[1])
+    quantity = int(line[2])
+    if name not in product_list.keys():
+        product_list[name] = [price, quantity]
+    else:
+        product_list[name][0] = price
+        product_list[name][1] += quantity
+    line = input().split(" ")
+
+
+for (key, value) in product_list.items():
+    end_value = f"{product_list[key][0] * product_list[key][1]:.2f}"
+    print(f"{key} -> {end_value}")
+    
