@@ -1,0 +1,52 @@
+initial_string = input().split("|")
+budget = float(input())
+price_for_train_tickets = 150
+
+money = 0
+line1_list = []
+initial_price = 0
+
+for i in range(len(initial_string)):
+    current_string = initial_string[i]
+    split_current = current_string.split("->")
+    type_of_item = split_current[0]
+    price_of_item = float(split_current[1])
+    if type_of_item == "Clothes" and price_of_item <= 50.00 and budget >= price_of_item:
+        budget -= price_of_item
+        new_price_of_item = price_of_item + price_of_item * 0.4
+        money += new_price_of_item
+        line1_list.append(new_price_of_item)
+        initial_price += price_of_item
+    elif type_of_item == "Shoes" and price_of_item <= 35.00 and budget >= price_of_item:
+        budget -= price_of_item
+        new_price_of_item = price_of_item + price_of_item * 0.4
+        money += new_price_of_item
+        line1_list.append(new_price_of_item)
+        initial_price += price_of_item
+    elif type_of_item == "Accessories" and price_of_item <= 20.50 and budget >= price_of_item:
+        budget -= price_of_item
+        new_price_of_item = price_of_item + price_of_item * 0.4
+        money += new_price_of_item
+        line1_list.append(new_price_of_item)
+        initial_price += price_of_item
+
+profit = sum(line1_list) - initial_price
+if profit < 0:
+    profit = 0
+if budget < 0:
+    budget = 0
+result = money + budget
+
+for k in range(len(line1_list)):
+    current = line1_list[k]
+    form = f"{current:.2f}"
+    print(f"{form}", end=" ")
+
+print()
+print(f"Profit: {profit:.2f}")
+
+if result >= price_for_train_tickets:
+    print("Hello, France!")
+else:
+    print("Not enough money.")
+    
