@@ -1,0 +1,45 @@
+import re
+list_of_participants = input().split(",")
+line = input()
+participants_and_scores = {}
+
+for p in list_of_participants:
+    participants_and_scores[p.strip()] = 0
+
+while line != 'end of race':
+    letter_regex = r'[A-Za-z]'
+    digit_regex = r'\d'
+    letters = re.findall(letter_regex, line)
+    digits = re.findall(digit_regex, line)
+    name = ''
+    current_distance = 0
+    for l in letters:
+        name += l
+    for d in digits:
+        current_distance += int(d)
+    if name in participants_and_scores.keys():
+        if participants_and_scores[name] == 0:
+            participants_and_scores[name] = current_distance
+        else:
+            participants_and_scores[name] += current_distance
+    line = input()
+
+for x, z in participants_and_scores.items():
+    if z == 0:
+        del x
+sorted_participants_and_scores = {k: v for k, v in sorted(participants_and_scores.items(), key=lambda v: -v[1])}
+
+place = 0
+
+for name1, v1 in sorted_participants_and_scores.items():
+    place += 1
+    if place == 1:
+        place1 = f'{place}st'
+        print(f'{place1} place: {name1}')
+    elif place == 2:
+        place1 = f'{place}nd'
+        print(f'{place1} place: {name1}')
+    elif place == 3:
+        place1 = f'{place}rd'
+        print(f'{place1} place: {name1}')
+        break
