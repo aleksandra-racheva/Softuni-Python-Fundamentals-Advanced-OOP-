@@ -1,0 +1,57 @@
+def check_user(dictionary, dictionary2, name, contest1, points1: int):
+    if contest1 in dictionary.keys():
+        current = dictionary[contest1]
+        if name in current.keys():
+            if current[name] < points1:
+                dictionary2[name] += (int(points1) - current[name])
+                dictionary[contest1][name] = points1
+            elif current[name] == points1:
+                if name not in dictionary2:
+                    dictionary2[name] = int(points1)
+                else:
+                    dictionary2[name] += int(points1)
+        else:
+            current[name] = int(points1)
+            if name not in dictionary2:
+                dictionary2[name] = int(points1)
+            else:
+                dictionary2[name] += int(points1)
+    else:
+        dictionary[contest1] = {name: int(points1)}
+        if name not in dictionary2:
+            dictionary2[name] = int(points1)
+        else:
+            dictionary2[name] += int(points1)
+
+
+line = input()
+contests_data = {}
+users_and_their_total = {}
+
+while line != "no more time":
+    command = line.split(" -> ")
+    username = command[0]
+    contest = command[1]
+    points = int(command[2])
+    check_user(contests_data, users_and_their_total, username, contest, points)
+    line = input()
+
+for x, y in contests_data.items():
+    number = 0
+    for q, i in y.items():
+        number += 1
+    print(f"{x}: {number} participants")
+    sorted_y = {w: r for w, r in sorted(y.items(), key=lambda r: (-r[1], r[0]))}
+    number1 = 0
+    for t, p in sorted_y.items():
+        number1 += 1
+        print(f"{number1}. {t} <::> {p}")
+
+number3 = 0
+individual_standings = {l: m for l, m in sorted(users_and_their_total.items(), key= lambda m: (-m[1], m[0]))}
+
+print("Individual standings:")
+
+for u, d in individual_standings.items():
+    number3 += 1
+    print(f"{number3}. {u} -> {d}")
