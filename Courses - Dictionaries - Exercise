@@ -1,0 +1,22 @@
+command = input().split(" : ")
+courses = {}
+
+while len(command) > 1:
+    course = command[0]
+    name_of_student = command[1]
+    if course not in courses:
+        courses[course] = [name_of_student]
+    else:
+        courses[course].append(name_of_student)
+    command = input().split(" : ")
+
+current_sum = 0
+
+for key in courses.keys():
+    for z in courses[key]:
+        current_sum += 1
+    print(f"{key}: {current_sum}")
+    for item in courses[key]:
+        print(f"-- {item}")
+    current_sum = 0
+    
