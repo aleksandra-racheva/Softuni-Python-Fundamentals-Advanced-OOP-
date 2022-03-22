@@ -1,0 +1,13 @@
+import re
+line = input()
+search = input()
+regex = rf'\b{search}\b'
+
+text = re.findall(regex, line, re.IGNORECASE)
+matches = []
+
+for i in text:
+    i = i
+    matches.append(i)
+
+print(len(matches))
