@@ -1,0 +1,19 @@
+command = input()
+phone_book = {}
+
+while "-" in command:
+    current = command.split("-")
+    name = current[0]
+    phone = current[1]
+    phone_book[name] = phone
+
+    command = input()
+
+number = int(command)
+
+for _ in range(number):
+    searched_contact = input()
+    if searched_contact in phone_book:
+        print(f"{searched_contact} -> {phone_book[searched_contact]}")
+    else:
+        print(f"Contact {searched_contact} does not exist.")
