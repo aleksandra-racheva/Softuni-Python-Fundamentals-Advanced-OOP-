@@ -1,0 +1,29 @@
+num = int(input())
+
+positive_list = list()
+negative_list = list()
+even_list = list()
+odd_list = list()
+
+for _ in range(num):
+    integer = int(input())
+    if integer >= 0:
+        positive_list.append(integer)
+    if integer < 0:
+        negative_list.append(integer)
+    if integer % 2 == 0:
+        even_list.append(integer)
+    if integer % 2 != 0:
+        odd_list.append(integer)
+
+command = input()
+
+if command == "positive":
+    print(positive_list)
+elif command == "negative":
+    print(negative_list)
+elif command == "odd":
+    print(odd_list)
+else:
+    print(even_list)
+    
