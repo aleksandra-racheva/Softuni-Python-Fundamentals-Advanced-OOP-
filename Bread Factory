@@ -1,0 +1,44 @@
+initial_string = input().split("|")
+
+energy = 100
+coins = 100
+
+for i in range(len(initial_string)):
+    current = initial_string[i]
+    split_current = current.split("-")
+    if "rest" in split_current:
+        energy_up = int(split_current[1])
+        energy += energy_up
+        if energy > 100:
+            energy = 100
+            print(f"You gained 0 energy.")
+            print(f"Current energy: {energy}.")
+        else:
+            print(f"You gained {energy_up} energy.")
+            print(f"Current energy: {energy}.")
+    elif "order" in split_current:
+        if energy >= 30:
+            coins_up = int(split_current[1])
+            coins += coins_up
+            energy -= 30
+            print(f"You earned {coins_up} coins.")
+            if energy < 0:
+                energy = 0
+        else:
+            energy += 50
+            print(f"You had to rest!")
+    else:
+        ingridient = split_current[0]
+        price_for_ingridient = int(split_current[1])
+        if coins >= price_for_ingridient:
+            coins -= price_for_ingridient
+            print(f"You bought {ingridient}.")
+        else:
+            print(f"Closed! Cannot afford {ingridient}.")
+            break
+    if i == len(initial_string) - 1:
+        print("Day completed!")
+        print(f"Coins: {coins}")
+        print(f"Energy: {energy}")
+        break
+        
