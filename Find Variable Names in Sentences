@@ -1,0 +1,11 @@
+import re
+line = input()
+
+text = re.finditer(r'\b_[A-Za-z\d]+\b', line)
+matches = []
+
+for i in text:
+    i = i.group()[1:]
+    matches.append(i)
+
+print(','.join(matches))
