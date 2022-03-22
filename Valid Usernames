@@ -1,0 +1,14 @@
+line = input().split(", ")
+word_to_print = []
+for word in line:
+    if 3 <= len(word) <= 16:
+        for ch in range(len(word)):
+            if word[ch].isalpha() or word[ch].isdigit() or word[ch] == "-" or word[ch] == "_":
+                if ch == len(word) - 1:
+                    word_to_print.append(word)
+            else:
+                break
+
+string = '\n'.join(word_to_print)
+
+print(string)
