@@ -1,0 +1,14 @@
+strings_to_search = input().split(", ")
+list_to_search_in = input().split(", ")
+new_list = []
+
+for item in strings_to_search:
+    for i in list_to_search_in:
+        if item in i:
+            new_list.append(item)
+result_list = []
+for i in new_list:
+    if i not in result_list:
+        result_list.append(i)
+
+print(result_list)
