@@ -1,0 +1,14 @@
+def price_calculator(product, quantity):
+    if product == "coffee":
+        return quantity * 1.50
+    elif product == "water":
+        return quantity * 1
+    elif product == "coke":
+        return quantity * 1.40
+    else:
+        return quantity * 2
+    
+current_product = input()
+current_quantity = int(input())
+result = price_calculator(current_product,current_quantity)
+print(f"{result:.2f}")
