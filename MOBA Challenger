@@ -1,0 +1,72 @@
+def duel(dictionary, dictionary2, a_player, b_player):
+    current_dict = {}
+    current_dict2 = {}
+    for key, value in dictionary.items():
+        if key == a_player:
+            current_dict = dict(value)
+        if key == b_player:
+            current_dict2 = dict(value)
+        if len(current_dict) > 0 and len(current_dict2) > 0:
+            for k in current_dict.keys():
+                if k in current_dict2.keys():
+                    if dictionary2[a_player] < dictionary2[b_player]:
+                        players_to_pop.append(a_player)
+                        break
+                    elif dictionary2[a_player] == dictionary2[b_player]:
+                        pass
+                    else:
+                        players_to_pop.append(b_player)
+                        break
+
+
+players_to_pop = []
+total_skill = {}
+line = input()
+players_statistics = {}
+
+while line != "Season end":
+    if "->" in line:
+        command = line.split(" -> ")
+        player = command[0]
+        position = command[1]
+        skill = int(command[2])
+        if player not in players_statistics.keys():
+            players_statistics[player] = {position: skill}
+            if player not in total_skill.keys():
+                total_skill[player] = players_statistics[player][position]
+            else:
+                total_skill[player] += players_statistics[player][position]
+        else:
+            if position in players_statistics[player].keys():
+                if players_statistics[player][position] < skill:
+                    players_statistics[player][position] = skill
+                    if player not in total_skill.keys():
+                        total_skill[player] = players_statistics[player][position]
+                    else:
+                        total_skill[player] += players_statistics[player][position]
+            else:
+                players_statistics[player][position] = skill
+                if player not in total_skill.keys():
+                    total_skill[player] = players_statistics[player][position]
+                else:
+                    total_skill[player] += players_statistics[player][position]
+
+    else:
+        command = line.split(" vs ")
+        player1 = command[0]
+        player2 = command[1]
+        if player1 in players_statistics.keys() and player2 in players_statistics.keys():
+            duel(players_statistics, total_skill, player1, player2)
+    line = input()
+
+for p in set(players_to_pop):
+    players_statistics.pop(p)
+    total_skill.pop(p)
+
+sorted_total_skill = {b: m for b, m in sorted(total_skill.items(), key=lambda m: (-m[1], m[0]))}
+
+for l, j in sorted_total_skill.items():
+    print(f"{l}: {j} skill")
+    current_statistic = {o: i for o, i in sorted(players_statistics[l].items(), key=lambda i: (-i[1], i[0]))}
+    for x, y in current_statistic.items():
+        print(f"- {x} <::> {y}")
