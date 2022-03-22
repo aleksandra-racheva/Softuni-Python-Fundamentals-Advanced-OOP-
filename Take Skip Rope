@@ -1,0 +1,42 @@
+initial_string = input()
+num_list = [int(number) for number in initial_string if number.isdigit()]
+digit_list = [digit for digit in initial_string if digit.isdigit() != True]
+digit_list_copy = digit_list.copy()
+
+take_list = [int(num_list[n]) for n in range(len(num_list)) if n % 2 == 0]
+skip_list = [int(num_list[z]) for z in range(len(num_list)) if z % 2 != 0]
+
+string_list = []
+strings_to_append = []
+string_to_remove = []
+is_done = False
+
+while len(digit_list) > 0:
+    if is_done:
+        break
+    for i in range(len(skip_list)):
+        if take_list[i] >= len(digit_list):
+            for f in digit_list:
+                string_list.append(f)
+            is_done = True
+            break
+        for h in range(take_list[i]):
+            str_to_append = digit_list_copy[h]
+            strings_to_append.append(str_to_append)
+        for k in strings_to_append:
+            string_list.append(k)
+        for l in strings_to_append:
+            digit_list.remove(l)
+        for q in range(skip_list[i]):
+            string_to_remove.append(digit_list[q])
+        for p in string_to_remove:
+            digit_list.remove(p)
+        if i == len(skip_list) - 1 and len(digit_list) > 0:
+            is_done = True
+            break
+        digit_list_copy = digit_list
+        strings_to_append.clear()
+        string_to_remove.clear()
+
+result = "".join(string_list)
+print(result)
