@@ -1,0 +1,5 @@
+initial_list = input().split(", ")
+initial_list = [int(b) for b in initial_list]
+
+return_list = [i for i in range(len(initial_list)) if initial_list[i] % 2 == 0]
+print(return_list)
