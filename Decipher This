@@ -1,0 +1,25 @@
+initial_list = input().split(" ")
+current_digit = ""
+for i in initial_list:
+    for ch in range(len(i)):
+        if i[ch].isdigit():
+            current_digit += i[ch]
+        else:
+            current_digit = int(current_digit)
+            initial_decode = chr(current_digit)
+            final_word = initial_decode + i[len(str(current_digit)):len(i)]
+            if ch == len(str(current_digit)):
+                index_second_letter = ch
+            if ch == len(i) - 1:
+                index_last_letter = len(final_word) - 1
+                current_digit = ""
+                current_word_as_list = [n for n in final_word]
+                temporary = current_word_as_list[1]
+                current_word_as_list[1] = current_word_as_list[index_last_letter]
+                current_word_as_list[index_last_letter] = temporary
+                word_to_append = "".join(current_word_as_list)
+    index_i = initial_list.index(i)
+    initial_list[index_i] = word_to_append
+
+absolute_result = " ".join(initial_list)
+print(absolute_result)
