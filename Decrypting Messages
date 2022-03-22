@@ -1,0 +1,7 @@
+key = int(input())
+num_of_letters = int(input())
+
+for _ in range(num_of_letters):
+    letter = input()
+    message = (ord(letter) + key)
+    print(chr(message), end="")
