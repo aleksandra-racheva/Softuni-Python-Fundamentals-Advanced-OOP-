@@ -1,0 +1,15 @@
+class Party:
+    def __init__(self):
+        self.people = []
+
+
+num_of_ppl_going = 0
+command = input()
+party = Party()
+while command != "End":
+    num_of_ppl_going += 1
+    party.people.append(command)
+    command = input()
+
+print(f"Going: {', '.join(party.people)}")
+print(f"Total: {num_of_ppl_going}")
