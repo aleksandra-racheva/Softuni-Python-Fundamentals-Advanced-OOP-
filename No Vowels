@@ -1,0 +1,9 @@
+string = input()
+
+final_list = []
+for ch in string:
+    if ch not in "auoeiAUEIO":
+        final_list.append(ch)
+
+result = "".join(final_list)
+print(result)
