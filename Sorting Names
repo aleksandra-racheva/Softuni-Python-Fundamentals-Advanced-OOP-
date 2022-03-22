@@ -1,0 +1,6 @@
+list_of_names = input().split(", ")
+
+list_of_names = sorted(list_of_names)
+list_of_names = sorted(list_of_names, key=lambda x: -len(x))
+
+print(list_of_names)
