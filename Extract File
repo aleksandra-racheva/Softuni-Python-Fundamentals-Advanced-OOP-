@@ -1,0 +1,25 @@
+line = input()
+random_list = []
+string = ""
+forbiden_symbol = "\*"
+symbol = ""
+
+for x in range(len(forbiden_symbol)):
+    if x == 0:
+        symbol = forbiden_symbol[x]
+        break
+
+for ch in range(len(line)):
+    if symbol in line[ch]:
+        random_list.append(string)
+        string = ""
+    else:
+        string += line[ch]
+    if ch == len(line) - 1:
+        random_list.append(string)
+
+last_item = random_list[len(random_list) - 1]
+file_name, extension = last_item.split(".")
+
+print(f"File name: {file_name}")
+print(f"File extension: {extension}")
