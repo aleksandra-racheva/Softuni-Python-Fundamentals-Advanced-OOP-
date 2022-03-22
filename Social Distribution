@@ -1,0 +1,25 @@
+initial_num_list = input().split(", ")
+population = list(map(int, initial_num_list))
+minimum_wealth = int(input())
+
+
+
+no_possibilities = False
+
+for number in population:
+    index_of_num = population.index(number)
+    current_most_wealthy = max(population)
+    index_of_most_wealthy = population.index(current_most_wealthy)
+    if number < minimum_wealth and current_most_wealthy - (minimum_wealth - number) >= minimum_wealth and number != current_most_wealthy:
+        current_most_wealthy -= (minimum_wealth - number)
+        number += (minimum_wealth - number)
+        population[index_of_num] = number
+        population[index_of_most_wealthy] = current_most_wealthy
+    elif current_most_wealthy - (minimum_wealth - number) < minimum_wealth:
+        print("No equal distribution possible")
+        no_possibilities = True
+        break
+
+if not no_possibilities:
+    print(population)
+    
