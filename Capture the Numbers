@@ -1,0 +1,14 @@
+import re
+
+text = input()
+numbers = []
+
+while len(text) > 0:
+    regex = r'\d+'
+    current = re.finditer(regex, text)
+    for i in current:
+        numbers.append(i.group())
+    text = input()
+
+
+print(' '.join(numbers))
