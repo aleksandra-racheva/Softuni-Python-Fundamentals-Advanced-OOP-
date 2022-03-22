@@ -1,0 +1,12 @@
+initial_str = input().split(" ")
+
+
+def abs_list():
+    final_list = []
+    for i in initial_str:
+        current = abs(float(i))
+        final_list.append(current)
+    return final_list
+
+
+print(abs_list())
