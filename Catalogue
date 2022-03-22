@@ -1,0 +1,23 @@
+class Catalogue:
+    def __init__(self, name: str):
+        self.name = name
+        self.products = []
+
+    def add_product(self, product_name: str):
+        self.products.append(product_name)
+
+    def get_by_letter(self, first_letter: str):
+        self.result_list = []
+        for product in self.products:
+            for i in range(len(product)):
+                if i == 0 and product[i] == first_letter:
+                    self.result_list.append(product)
+        return self.result_list
+
+    def __repr__(self):
+        sorted_list = sorted(self.products)
+        string = ""
+        for z in sorted_list:
+            string = string + z + "\n"
+        return f"Items in the {self.name} catalogue:\n{string[0:-1]}"
+        
