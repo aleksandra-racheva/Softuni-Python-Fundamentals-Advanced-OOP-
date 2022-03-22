@@ -1,0 +1,9 @@
+def even(x):
+    return x % 2 == 0
+
+initial_list = input().split(" ")
+initial_list = [int(i) for i in initial_list]
+
+result = list(filter(even, initial_list))
+
+print(result)
