@@ -1,0 +1,16 @@
+command = input()
+output_list = [""] * 11
+result_list = []
+
+while command != "End":
+    current_command = command.split("-")
+    index = int(current_command[0])
+    note = current_command[1]
+    output_list[index] = note
+    command = input()
+    
+for i in range(len(output_list)):
+    if output_list[i] != '':
+        result_list.append(output_list[i])
+        
+print(result_list)
