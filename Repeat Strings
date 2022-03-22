@@ -1,0 +1,8 @@
+line = input().split(" ")
+string = ''
+for word in line:
+    current_str = ""
+    current_str += word * len(word)
+    string += current_str
+
+print(string)
