@@ -1,0 +1,16 @@
+line = input()
+string = ""
+listy = []
+index = -1
+for ch in line:
+    listy.append(ch)
+    index += 1
+    if index == 0:
+        current_ch = ch
+        string += current_ch
+    elif listy[index] == listy[index - 1]:
+        pass
+    else:
+        string += ch
+
+print(string)
