@@ -1,0 +1,14 @@
+from1 = ord(input())
+to = ord(input())
+string = input()
+current_list = []
+total = 0
+
+for n in range(from1 + 1, to):
+    current_list.append(chr(n))
+
+for x in string:
+    if x in current_list:
+        total += ord(x)
+
+print(total)
