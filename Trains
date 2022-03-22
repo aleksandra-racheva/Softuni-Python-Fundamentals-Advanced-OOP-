@@ -1,0 +1,24 @@
+num_of_wagons = int(input())
+train = []
+for i in range(num_of_wagons):
+    train.append(0)
+
+command = input()
+while command != "End":
+    if "add" in command:
+        current_command = command.split(" ")
+        num_ppl = int(current_command[1])
+        train[len(train) - 1] += num_ppl
+    elif "insert" in command:
+        current_command = command.split(" ")
+        index = int(current_command[1])
+        people = int(current_command[2])
+        train[index] += people
+    else:
+        current_command = command.split(" ")
+        index = int(current_command[1])
+        people = int(current_command[2])
+        train[index] -= people
+    command = input()
+
+print(train)
