@@ -1,0 +1,8 @@
+letters = input().split(", ")
+dictionary = {}
+
+for l in letters:
+    ord_letter = ord(l)
+    dictionary[l] = int(ord_letter)
+
+print(dictionary)
