@@ -1,0 +1,39 @@
+initial_string = input().split("#")
+water_available = int(input())
+
+effort = 0
+total_fire = 0
+print("Cells:")
+
+for i in range(len(initial_string)):
+    current_string = initial_string[i]
+    split_current = current_string.split(" = ")
+    type_of_fire = split_current[0]
+    cell = int(split_current[1])
+    if type_of_fire == "High":
+        if 81 <= cell <= 125:
+            if water_available >= cell:
+                water_available -= cell
+                effort += cell * 0.25
+                total_fire += cell
+                print(f"- {cell}")
+    elif type_of_fire == "Medium":
+        if 51 <= cell <= 80:
+            if water_available >= cell:
+                water_available -= cell
+                effort += cell * 0.25
+                total_fire += cell
+                print(f"- {cell}")
+    elif type_of_fire == "Low":
+        if 1 <= cell <= 50:
+            if water_available >= cell:
+                water_available -= cell
+                effort += cell * 0.25
+                total_fire += cell
+                print(f"- {cell}")
+    length = len(initial_string)
+    if i >= length and water_available > 0:
+        break
+
+print(f"Effort: {effort:.2f}")
+print(f"Total Fire: {total_fire}")
