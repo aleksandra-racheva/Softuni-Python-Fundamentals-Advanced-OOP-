@@ -1,0 +1,16 @@
+num_of_strings = int(input())
+key_word = input()
+
+original_list = list()
+filtered_list = list()
+
+for _ in range(num_of_strings):
+    str = input()
+    original_list.append(str)
+    if key_word in str:
+        filtered_list.append(str)
+        
+        
+print(original_list)
+print(filtered_list)
+    
