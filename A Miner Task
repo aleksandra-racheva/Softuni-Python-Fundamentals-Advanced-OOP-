@@ -1,0 +1,19 @@
+command = input()
+times = 0
+dictionary = {}
+
+while command != "stop":
+    times += 1
+    if times % 2 != 0:
+        key = command
+    else:
+        value = int(command)
+        if key not in dictionary:
+            dictionary[key] = value
+        else:
+            dictionary[key] += value
+
+    command = input()
+
+for i in dictionary:
+    print(f"{i} -> {dictionary[i]}")
