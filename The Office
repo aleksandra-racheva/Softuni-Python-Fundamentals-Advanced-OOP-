@@ -1,0 +1,21 @@
+hapiness_list = input().split(" ")
+hapiness_list = [int(i) for i in hapiness_list]
+factor = int(input())
+
+hapiness_list = [i * factor for i in hapiness_list]
+
+sum_of_happiness = sum(hapiness_list)
+average = sum_of_happiness / len(hapiness_list)
+
+half_of_all_employees = len(hapiness_list) // 2
+is_happy = 0
+
+for item in hapiness_list:
+    if item >= average:
+        is_happy += 1
+
+
+if is_happy >= half_of_all_employees:
+    print(f"Score: {is_happy}/{len(hapiness_list)}. Employees are happy!")
+else:
+    print(f"Score: {is_happy}/{len(hapiness_list)}. Employees are not happy!")
