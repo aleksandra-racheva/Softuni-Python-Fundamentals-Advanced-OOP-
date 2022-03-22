@@ -1,0 +1,7 @@
+def area(highth,wigth):
+    return highth * wigth
+
+h = int(input())
+w = int(input())
+
+print(area(h,w))
