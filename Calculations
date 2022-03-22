@@ -1,0 +1,15 @@
+def area(a,b,operator):
+    if operator == "multiply":
+        return a * b
+    elif operator == "divide":
+        return int(a / b)
+    elif operator == "add":
+        return a + b
+    else:
+        return a - b
+
+current_opperator = input()
+a = int(input())
+b = int(input())
+
+print(area(a,b,current_opperator))
