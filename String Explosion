@@ -1,0 +1,26 @@
+text = list(input())
+ 
+to_delete = dict()
+indices = list()
+for i in range(len(text)):
+    if text[i] == ">":
+        to_delete[i] = text[i + 1]
+ 
+for key, value in to_delete.items():
+    if key in indices:
+        key += 1
+ 
+    start = int(key)
+    end = int(key) + int(value)
+    for z in range(start, end + 1):
+        if z not in indices:
+            indices.append(z)
+        else:
+            while z in indices:
+                z += 1
+for j in reversed(indices):
+    if j in range(len(text)):
+        if text[j] != ">":
+            del text[j]
+ 
+print("".join(text))
