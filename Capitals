@@ -1,0 +1,8 @@
+countries = input().split(", ")
+capitals = input().split(", ")
+
+zipped = dict(zip(countries, capitals))
+
+for i in zipped:
+    print(f"{i} -> {zipped[i]}")
+    
