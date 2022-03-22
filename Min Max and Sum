@@ -1,0 +1,23 @@
+initial_list = input().split(" ")
+initial_list = [int(i) for i in initial_list]
+
+
+def minimal(initial_list):
+    result = min(initial_list)
+    print(f"The minimum number is {result}")
+
+
+def maxmimum(initial_list):
+    result = max(initial_list)
+    print(f"The maximum number is {result}")
+
+
+def sum_of(initial_list):
+    result = sum(initial_list)
+    print(f"The sum number is: {result}")
+
+
+
+minimal(initial_list)
+maxmimum(initial_list)
+sum_of(initial_list)
