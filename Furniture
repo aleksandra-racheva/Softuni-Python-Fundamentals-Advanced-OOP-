@@ -1,0 +1,21 @@
+import re
+line = input()
+regex = r'>>(?P<furniture>[A-Za-z][a-zA-z]+)<<(?P<price>\d+(\.\d+)*)!(?P<quantity>\d+)'
+matches = []
+
+print('Bought furniture:')
+total = float(0)
+
+
+while line != 'Purchase':
+    text = re.finditer(regex, line)
+
+    for i in text:
+        matches.append(i.group())
+
+        print(i.group('furniture'))
+        total += float(i.group('price')) * int(i.group('quantity'))
+    line = input()
+
+if line == 'Purchase':
+    print(f'Total money spend: {total:.2f}')
