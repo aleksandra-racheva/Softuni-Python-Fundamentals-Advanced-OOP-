@@ -1,0 +1,6 @@
+initial_list = input().split(" ")
+
+result_list = [i for i in initial_list if len(i) % 2 == 0]
+
+for item in result_list:
+    print(item)
