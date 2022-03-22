@@ -1,0 +1,15 @@
+initial_str = input()
+
+str_list = initial_str.split(" ")
+
+for i in range(len(str_list)):
+    if int(str_list[i]) == 0:
+        str_list[i] = 0
+    elif int(str_list[i]) > 0:
+        current_str = int(str_list[i]) - (int(str_list[i]) * 2)
+        str_list[i] = current_str
+    elif int(str_list[i]) < 0:
+        current_str2 = int(str_list[i]) - (int(str_list[i]) * 2)
+        str_list[i] = current_str2
+        
+print(str_list)
