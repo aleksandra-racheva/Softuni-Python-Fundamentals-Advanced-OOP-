@@ -1,0 +1,29 @@
+num_list = input().split(" ")
+finish_index = len(num_list) // 2
+
+lenght_list = len(num_list)
+right = 0
+left = 0
+left_is_finished = False
+
+for i in range(0, lenght_list + 1):
+    if i == finish_index:
+        break
+    right += int(num_list[i])
+    if int(num_list[i]) == 0:
+        right -= right * 0.2
+    for b in range(lenght_list - 1, -1, -1):
+        if left_is_finished:
+            break
+        if b <= finish_index:
+            left_is_finished = True
+            break
+        left += int(num_list[b])
+        if int(num_list[b]) == 0:
+            left -= left * 0.2
+
+
+if left < right:
+    print(f"The winner is right with total time: {left:.1f}")
+else:
+    print(f"The winner is left with total time: {right:.1f}")
