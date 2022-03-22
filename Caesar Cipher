@@ -1,0 +1,8 @@
+line = input()
+final_str = ""
+for ch in line:
+    current_ord = ord(ch) + 3
+    current_ch = chr(current_ord)
+    final_str += current_ch
+
+print(final_str)
