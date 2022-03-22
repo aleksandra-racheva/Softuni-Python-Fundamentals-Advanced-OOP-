@@ -1,0 +1,36 @@
+initial_list = input().split(" ")
+count = int(input())
+
+lenght = len(initial_list)
+half_lenght = lenght // 2
+original_half_lenght = half_lenght
+
+newlist = []
+newlist2 = []
+
+for i in range(count):
+    if i == 0:
+        copy_ini_list = initial_list.copy()
+    if i > 0:
+        if i > 1:
+            newlist2.clear()
+        for k in range(len(newlist)):
+            newlist2.append(newlist[k])
+        newlist.clear()
+        initial_list = newlist2
+        copy_ini_list.clear()
+        for b in range(len(newlist2)):
+            copy_ini_list.append(newlist2[b])
+
+    half_lenght = original_half_lenght
+    newlist.append(initial_list[0])
+    for j in range(len(initial_list)):
+        if j == 0:
+            continue
+        initial_list[j] = initial_list[half_lenght]
+        newlist.append(initial_list[j])
+        if j == original_half_lenght:
+            break
+        newlist.append(copy_ini_list[j])
+        half_lenght += 1
+print(newlist)
