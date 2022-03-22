@@ -1,0 +1,6 @@
+import re
+line = input()
+regex = r'\b[A-Z][a-z]+ [A-Z][a-z]+\b'
+text = re.findall(regex, line)
+
+print(' '.join(text))
