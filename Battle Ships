@@ -1,0 +1,29 @@
+num_rows_of_the_field = int(input())
+
+list_of_rows = []
+
+for i in range(num_rows_of_the_field):
+    string = input().split(" ")
+    string = list(map(int, string))
+    list_of_rows.append(string)
+
+attacks = input().split(" ")
+
+defeat_count = 0
+
+for x in range(len(attacks)):
+    current_attack = attacks[x].split("-")
+    index_of_row = int(current_attack[0])
+    index_in_row = int(current_attack[1])
+    for current in list_of_rows:
+        index_of_current = list_of_rows.index(current)
+        if index_of_current == index_of_row:
+            if current[index_in_row] == 0:
+                pass
+            if current[index_in_row] > 0:
+                current[index_in_row] -= 1
+                if current[index_in_row] == 0:
+                    defeat_count += 1
+
+
+print(defeat_count)
