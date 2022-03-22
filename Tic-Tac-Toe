@@ -1,0 +1,47 @@
+row1 = input().split(" ")
+row2 = input().split(" ")
+row3 = input().split(" ")
+
+first_player_won = False
+second_player_won = False
+
+if row1[0] == "1" and row2[0] == "1" and row3[0] == "1":
+    first_player_won = True
+elif row1[1] == "1" and row2[1] == "1" and row3[1] == "1":
+    first_player_won = True
+elif row1[2] == "1" and row2[2] == "1" and row3[2] == "1":
+    first_player_won = True
+elif row1[0] == "1" and row2[1] == "1" and row3[2] == "1":
+    first_player_won = True
+elif row1[2] == "1" and row2[1] == "1" and row3[0] == "1":
+    first_player_won = True
+elif row1[0] == "1" and row1[1] == "1" and row1[2] == "1":
+    first_player_won = True
+elif row2[0] == "1" and row2[1] == "1" and row2[2] == "1":
+    first_player_won = True
+elif row3[0] == "1" and row3[1] == "1" and row3[2] == "1":
+    first_player_won = True
+elif row1[0] == "2" and row2[0] == "2" and row3[0] == "2":
+    second_player_won = True
+elif row1[1] == "2" and row2[1] == "2" and row3[1] == "2":
+    second_player_won = True
+elif row1[2] == "2" and row2[2] == "2" and row3[2] == "2":
+    second_player_won = True
+elif row1[0] == "2" and row2[1] == "2" and row3[2] == "2":
+    second_player_won = True
+elif row1[2] == "2" and row2[1] == "2" and row3[0] == "2":
+    second_player_won = True
+elif row1[0] == "2" and row1[1] == "2" and row1[2] == "2":
+    second_player_won = True
+elif row2[0] == "2" and row2[1] == "2" and row2[2] == "2":
+    second_player_won = True
+elif row3[0] == "2" and row3[1] == "2" and row3[2] == "2":
+    second_player_won = True
+
+if first_player_won:
+    print("First player won")
+elif second_player_won:
+    print("Second player won")
+else:
+    print("Draw!")
+    
