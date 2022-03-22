@@ -1,0 +1,13 @@
+factor = int(input())
+count = int(input())
+
+initial_factor = factor
+list = list()
+list.append(factor)
+
+for i in range(1, count):
+    current = (factor + initial_factor)
+    factor = current
+    list.append(factor)
+
+print(list)
