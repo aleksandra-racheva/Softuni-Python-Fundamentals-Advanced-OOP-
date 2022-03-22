@@ -1,0 +1,31 @@
+key = input().split(" ")
+line = input()
+list_with_valid_str = []
+
+while line != "find":
+    index = -1
+    line_as_list = [x for x in line]
+    for item in range(len(line_as_list)):
+        index += 1
+        if index > len(key) - 1:
+            index = 0
+        line_as_list[item] = chr(ord(line_as_list[item]) - int(key[index]))
+    current_str = "".join(line_as_list)
+    list_with_valid_str.append(current_str)
+    line = input()
+
+for current_string in list_with_valid_str:
+    starting_index_of_treasure = current_string.find("&") + 1
+    starting_index_of_coordinats = current_string.find("<") + 1
+    ending_index_of_coordinates = current_string.find(">")
+    treasure = ""
+    coordinats = ""
+    for i in range(starting_index_of_treasure, len(current_string)):
+        if current_string[i] == "&":
+            break
+        else:
+            treasure += current_string[i]
+
+    for f in range(starting_index_of_coordinats, ending_index_of_coordinates):
+        coordinats += current_string[f]
+    print(f"Found {treasure} at {coordinats}")
