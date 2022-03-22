@@ -1,0 +1,24 @@
+command = input()
+dictionary = {}
+last_command = ""
+while True:
+    if ":" not in command:
+        last = command
+        for ch in last:
+            if ch == "_":
+                ch = " "
+            last_command += ch
+
+        break
+    current = command.split(":")
+    name = current[0]
+    id = current[1]
+    course = current[2]
+    dictionary[name] = [id, course]
+    command = input()
+
+
+for e in dictionary:
+    if last_command in dictionary[e]:
+        temp = dictionary.get(e)
+        print(f"{e} - {temp[0]}")
