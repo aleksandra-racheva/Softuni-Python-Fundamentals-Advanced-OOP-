@@ -1,0 +1,58 @@
+command = input()
+exam_dict = {}
+names_to_remove_in_the_end = []
+times = 1
+ 
+while command != "exam finished":
+    current_command = command.split("-")
+    if current_command[1] == "banned":
+        username = current_command[0]
+        names_to_remove_in_the_end.append(username)
+    else:
+        current_command = command.split("-")
+        username = current_command[0]
+        programming_language = current_command[1]
+        points = current_command[2]
+        if username not in exam_dict.keys():
+            exam_dict[username] = {programming_language: [times, points]}
+        else:
+            current_name = exam_dict.get(username)
+            current_points = current_name.get(programming_language)
+            new_dict = {}
+            if programming_language not in current_name:
+                current_name[programming_language] = [times, points]
+            else:
+                for z, q in current_name.items():
+                    if z == programming_language:
+                        q[0] += 1
+                        if int(q[1]) < int(points):
+                            current_points[1] = points
+                    if programming_language not in current_name.keys():
+                        new_dict[programming_language] = [times, points]
+                for item1, item2 in new_dict.items():
+                    current_name[item1] = item2
+    command = input()
+ 
+dictionary_name_points = {}
+dictionary_course_times = {}
+ 
+for key, value in exam_dict.items():
+    name1 = key
+    for v, v1 in value.items():
+        lang = v
+        times_lang = v1[0]
+        max_points = v1[1]
+        if name1 not in names_to_remove_in_the_end:
+            dictionary_name_points[name1] = max_points
+        if lang not in dictionary_course_times.keys():
+            dictionary_course_times[lang] = times_lang
+        else:
+            dictionary_course_times[lang] += times_lang
+ 
+print("Results:")
+for r, t in dictionary_name_points.items():
+    print(f"{r} | {t}")
+print("Submissions:")
+for w, p in dictionary_course_times.items():
+    print(f"{w} - {p}")
+    
