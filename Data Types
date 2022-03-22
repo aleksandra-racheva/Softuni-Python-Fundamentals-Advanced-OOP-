@@ -1,0 +1,15 @@
+def convertor(parameter, product):
+    if parameter == "int":
+        result = int(product) * 2
+        return result
+    elif parameter == "real":
+        result = f"{float(product)* 1.5:.2f}"
+        return result
+    else:
+        result = "$" + product + "$"
+        return result
+
+data_type = input()
+current_product = input()
+
+print(convertor(data_type,current_product))
