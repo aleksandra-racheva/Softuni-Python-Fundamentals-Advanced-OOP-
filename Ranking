@@ -1,0 +1,71 @@
+def contest_checker(dictionary, contest1, password1, name, points1):
+    points1 = int(points1)
+    if contest1 in dictionary.keys():
+        if dictionary[contest1] == password1:
+            if name not in user_data.keys():
+                user_data[name] = {contest1: points1}
+            else:
+                current = user_data[name]
+                if contest1 in user_data[name].keys():
+                    if current[contest1] < points1:
+                        current[contest1] = points1
+                else:
+                    current[contest1] = points1
+
+
+line = input()
+
+user_data = {}
+contests_and_their_passwords = {}
+while line != "end of contests":
+    contest_data = line.split(":")
+    contest = contest_data[0]
+    password = contest_data[1]
+    contests_and_their_passwords[contest] = password
+    line = input()
+
+
+submission_data = input()
+
+while submission_data != "end of submissions":
+    current_data = submission_data.split("=>")
+    current_contest = current_data[0]
+    current_password = current_data[1]
+    username = current_data[2]
+    points = current_data[3]
+    contest_checker(contests_and_their_passwords, current_contest, current_password, username, points)
+    submission_data = input()
+
+total_scores = {}
+current_total = 0
+
+for key, value in user_data.items():
+    name1 = key
+    for k, v in value.items():
+        current_total += int(v)
+    total_scores[name1] = current_total
+    current_total = 0
+
+max_value = 0
+
+for key1, value1 in total_scores.items():
+    if value1 > max_value:
+        max_value = value1
+
+for key2, value2 in total_scores.items():
+    if value2 == max_value:
+        print(f"Best candidate is {key2} with total {value2} points.")
+        break
+
+sorted_by_user_user_data = {x: z for x, z in sorted(user_data.items())}
+
+for kk in sorted_by_user_user_data.keys():
+    sorted_value = {y: m for y, m in sorted(sorted_by_user_user_data[kk].items(), key=lambda m: m[1], reverse=True)}
+    sorted_by_user_user_data[kk] = sorted_value
+
+print("Ranking:")
+for q, p in sorted_by_user_user_data.items():
+    needed_name = q
+    print(needed_name)
+    for o, b in p.items():
+        print(f"#  {o} -> {b}")
