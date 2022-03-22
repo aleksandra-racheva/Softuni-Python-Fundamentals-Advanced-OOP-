@@ -1,0 +1,42 @@
+import re
+
+number = int(input())
+decripted_list = []
+attacked_planets = []
+destroyed_planets = []
+
+for n in range(number):
+    line = input()
+    initial_encript_regex = r'[starSTAR]'
+    length = len(re.findall(initial_encript_regex, line))
+    current_message = ''
+    for ch in line:
+        current_ch = chr(ord(ch) - length)
+        current_message += current_ch
+    decripted_list.append(current_message)
+
+for item in decripted_list:
+    regex = r'(?<=@)([a-zA-Z]+)(?:[^\@\!\:\>\-]+)?(?::(\d+))(?:[^\@\!\:\>\-]+)?!(A|D)!(?:[^\@\!\:\>\-]+)?->(\d+)'
+    matches = re.finditer(regex, item)
+    for i in matches:
+        name_planet = i.group(1)
+        type_of_attack = i.group(3)
+        if type_of_attack == "A":
+            attacked_planets.append(name_planet)
+        else:
+            destroyed_planets.append(name_planet)
+
+
+if len(attacked_planets) > 0:
+    print(f'Attacked planets: {len(attacked_planets)}')
+    for x in sorted(attacked_planets):
+        print(f"-> {x}")
+else:
+    print('Attacked planets: 0')
+
+if len(destroyed_planets) > 0:
+    print(f'Destroyed planets: {len(destroyed_planets)}')
+    for e in sorted(destroyed_planets):
+        print(f"-> {e}")
+else:
+    print('Destroyed planets: 0')
