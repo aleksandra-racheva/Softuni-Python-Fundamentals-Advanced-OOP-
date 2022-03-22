@@ -1,0 +1,32 @@
+def num_clasificator(num_list):
+    positive_list = []
+    negative_list = []
+    even_list = []
+    odd_list = []
+    for i in num_list:
+        if i >= 0:
+            positive_list.append(i)
+        else:
+            negative_list.append(i)
+        if i % 2 == 0:
+            even_list.append(i)
+        else:
+            odd_list.append(i)
+    positive_list = [str(i) for i in positive_list]
+    negative_list = [str(j) for j in negative_list]
+    even_list = [str(k) for k in even_list]
+    odd_list = [str(l) for l in odd_list]
+    final_positive = ", ".join(positive_list)
+    final_negative = ", ".join(negative_list)
+    final_even = ", ".join(even_list)
+    final_odd = ", ".join(odd_list)
+
+    print(f"Positive: {final_positive}")
+    print(f"Negative: {final_negative}")
+    print(f"Even: {final_even}")
+    print(f"Odd: {final_odd}")
+
+initial_list = input().split(", ")
+initial_list = [int(m) for m in initial_list]
+
+num_clasificator(initial_list)
