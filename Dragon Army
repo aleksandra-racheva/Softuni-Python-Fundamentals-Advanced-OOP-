@@ -1,0 +1,52 @@
+def fit_dragons_into_a_dict(dictionary, colour, a_name, a_damage: int, a_health: int, an_armor: int):
+    if colour not in dictionary.keys():
+        dictionary[colour] = {a_name: [a_damage, a_health, an_armor]}
+    else:
+        dictionary[colour][a_name] = [a_damage, a_health, an_armor]
+
+
+number = int(input())
+dragon_dict = {}
+
+for _ in range(number):
+    color, name, damage, health, armor = input().split(" ")
+    if damage == "null":
+        damage = int(45)
+    else:
+        damage = int(damage)
+    if health == "null":
+        health = int(250)
+    else:
+        health = int(health)
+    if armor == "null":
+        armor = int(10)
+    else:
+        armor = int(armor)
+    fit_dragons_into_a_dict(dragon_dict, color, name, damage, health, armor)
+
+type_dragons_and_their_average_stats = {}
+
+for key, current_dict in dragon_dict.items():
+    current_list_of_stats_for_damage = []
+    current_list_of_stats_for_health = []
+    current_list_of_stats_for_armor = []
+    type_of_dragon = key
+    for key1, current_list in current_dict.items():
+        name_of_current_dragon = key1
+        stats_for_current_dragon = current_list
+        current_list_of_stats_for_damage.append(int(stats_for_current_dragon[0]))
+        current_list_of_stats_for_health.append(int(stats_for_current_dragon[1]))
+        current_list_of_stats_for_armor.append(int(stats_for_current_dragon[2]))
+    average_damage = sum(current_list_of_stats_for_damage) / len(current_list_of_stats_for_damage)
+    average_health = sum(current_list_of_stats_for_health) / len(current_list_of_stats_for_health)
+    average_armor = sum(current_list_of_stats_for_armor) / len(current_list_of_stats_for_armor)
+
+    type_dragons_and_their_average_stats[type_of_dragon] = [float(average_damage), float(average_health), float(average_armor)]
+
+
+for k, v in type_dragons_and_their_average_stats.items():
+    color1 = k
+    print(f"{color1}::({v[0]:.2f}/{v[1]:.2f}/{v[2]:.2f})")
+    sorted_dragon_list = {name1: list1 for name1, list1 in sorted(dragon_dict[color1].items(), key=lambda item: item[0])}
+    for name2, list2 in sorted_dragon_list.items():
+        print(f"-{name2} -> damage: {list2[0]}, health: {list2[1]}, armor: {list2[2]}")
