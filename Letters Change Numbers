@@ -1,0 +1,39 @@
+line = input()
+line = line.strip()
+string = ""
+times = 0
+total = float(0)
+capp_alphabet = [letter for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
+low_alphabet = [l1 for l1 in "abcdefghijklmnopqrstuvwxyz"]
+
+# for ch in range(len(line)):
+#     if line[ch] != " ":
+#         times = 0
+#         string += line[ch]
+#     else:
+#         times += 1
+#     if times == 1:
+#         string += " "
+
+current_list = line.split()
+
+for item in current_list:
+    first_letter = item[0]
+    last_letter = item[-1]
+    digit = int(item[1:-1])
+    current_total = 0
+    if first_letter in capp_alphabet:
+        index = capp_alphabet.index(first_letter) + 1
+        current_total += digit / index
+    elif first_letter in low_alphabet:
+        index = low_alphabet.index(first_letter) + 1
+        current_total += digit * index
+    if last_letter in capp_alphabet:
+        index = capp_alphabet.index(last_letter) + 1
+        current_total -= index
+    else:
+        index = low_alphabet.index(last_letter) + 1
+        current_total += index
+    total += current_total
+
+print(f"{total:.2f}")
