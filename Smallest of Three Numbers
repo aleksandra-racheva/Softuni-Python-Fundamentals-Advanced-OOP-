@@ -1,0 +1,13 @@
+def minimizer(int1,int2,int3):
+    list = []
+    list.append(int(int1))
+    list.append(int(int2))
+    list.append(int(int3))
+    minimum = min(list)
+    return minimum
+
+integer1 = int(input())
+integer2 = int(input())
+integer3 = int(input())
+
+print(minimizer(integer1,integer2,integer3))
