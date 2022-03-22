@@ -1,0 +1,11 @@
+input1 = input()
+input2 = input()
+input3 = input()
+
+list = [input1, input2, input3]
+
+ordered_list = list[0]
+list[0] = list[2]
+list[2] = ordered_list
+
+print(list)
