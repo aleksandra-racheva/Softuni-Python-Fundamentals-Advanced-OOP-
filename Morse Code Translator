@@ -1,0 +1,18 @@
+morse_code_dict = {".-": "A", "-...": "B", "-.-.": "C", "-..": "D", ".": "E", "..-.": "F", "--.": "G", "....": "H",
+                   "..": "I", ".---": "J", "-.-": "K", ".-..": "L", "--": "M", "-.": "N", "---": "O", ".--.": "P",
+                   "--.-": "Q", ".-.": "R", "...": "S", "-": "T", "..-": "U", "...-": "V", ".--": "W", "-..-": "X",
+                   "-.--": "Y", "--..": "Z"}
+
+code = input().split("|")
+list_with_decoded_words = []
+
+for word in code:
+    word = word.strip()
+    letters_in_current_word = word.split(" ")
+    current_word = ""
+    for l in letters_in_current_word:
+        current_word += morse_code_dict[l]
+    list_with_decoded_words.append(current_word)
+
+result_str = " ".join(list_with_decoded_words)
+print(result_str)
