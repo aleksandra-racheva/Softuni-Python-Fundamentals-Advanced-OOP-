@@ -1,0 +1,9 @@
+def text_multiplier(str, count):
+    for i in range(count):
+        string = str * count
+    return string
+
+current_str = input()
+current_count = int(input())
+
+print(text_multiplier(current_str, current_count))
