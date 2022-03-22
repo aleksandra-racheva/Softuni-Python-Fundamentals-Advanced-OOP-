@@ -1,0 +1,7 @@
+word_to_remove = input()
+string_to_clean_up = input()
+
+while word_to_remove in string_to_clean_up:
+    string_to_clean_up = string_to_clean_up.replace(word_to_remove, "")
+
+print(string_to_clean_up)
