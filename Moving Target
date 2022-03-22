@@ -1,0 +1,43 @@
+initial_list = input().split(" ")
+initial_list = list(map(int, initial_list))
+copy_initial_list = initial_list.copy()
+command = input()
+
+
+while command != "End":
+    if "Shoot" in command:
+        current = command.split(" ")
+        index = int(current[1])
+        power = int(current[2])
+        if index in range(len(initial_list)):
+            if initial_list[index] > power:
+                initial_list[index] -= power
+                copy_initial_list = initial_list
+            else:
+                initial_list.remove(initial_list[index])
+                copy_initial_list = initial_list
+    elif "Add" in command:
+        current = command.split(" ")
+        index = int(current[1])
+        value = int(current[2])
+        if index in range(len(initial_list)):
+            initial_list.insert(index, value)
+            copy_initial_list = initial_list
+        else:
+            print("Invalid placement!")
+    else:
+        current = command.split(" ")
+        index = int(current[1])
+        radius = int(current[2])
+        if index - radius in range(len(initial_list)) and (index + radius) in range(len(initial_list)):
+            new_list = [initial_list[item] for item in range(index - radius, (index+radius) + 1)]
+            for l in new_list:
+                initial_list.remove(l)
+
+        else:
+            print("Strike missed!")
+    command = input()
+
+initial_list = [str(z) for z in initial_list]
+result = "|".join(initial_list)
+print(result)
