@@ -1,0 +1,7 @@
+initial_list = input().split(" ")
+initial_list = [int(i) for i in initial_list]
+def sort(initial_list):
+    result = sorted(initial_list)
+    return result
+
+print(sort(initial_list))
