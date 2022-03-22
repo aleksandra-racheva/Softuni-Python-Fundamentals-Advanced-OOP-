@@ -1,0 +1,156 @@
+line = input()
+line = line.replace(" ", "")
+line = line.split(",")
+
+for ticket in line:
+    if len(ticket) == 20:
+        left_side_is_valid = False
+        right_side_is_valid = False
+        num_of_adds = 0
+        num_of_hashtags = 0
+        num_of_dollars = 0
+        num_of_points = 0
+        adds = []
+        hashtags = []
+        dollars = []
+        points = []
+        for n in range(0, 10):
+            if ticket[n] == "@" or ticket[n] == "#" or ticket[n] == "$" or ticket[n] == "^":
+                if ticket[n] == "@":
+                    num_of_adds += 1
+                elif ticket[n] == "#":
+                    num_of_hashtags += 1
+                elif ticket[n] == "$":
+                    num_of_dollars += 1
+                elif ticket[n] == "^":
+                    num_of_points += 1
+                if n == 9:
+                    adds.append(num_of_adds)
+                    hashtags.append(num_of_hashtags)
+                    dollars.append(num_of_dollars)
+                    points.append(num_of_points)
+                    num_of_adds = 0
+                    num_of_hashtags = 0
+                    num_of_dollars = 0
+                    num_of_points = 0
+            else:
+                adds.append(num_of_adds)
+                hashtags.append(num_of_hashtags)
+                dollars.append(num_of_dollars)
+                points.append(num_of_points)
+                num_of_adds = 0
+                num_of_hashtags = 0
+                num_of_dollars = 0
+                num_of_points = 0
+        num_of_adds = max(adds)
+        num_of_hashtags = max(hashtags)
+        num_of_dollars = max(dollars)
+        num_of_points = max(points)
+
+
+        if num_of_adds >= 6:
+            needed_symbol = "@"
+            left_side_is_valid = True
+        elif num_of_hashtags >= 6:
+            needed_symbol = "#"
+            left_side_is_valid = True
+        elif num_of_dollars >= 6:
+            needed_symbol = "$"
+            left_side_is_valid = True
+        elif num_of_points >= 6:
+            needed_symbol = "^"
+            left_side_is_valid = True
+
+        if left_side_is_valid:
+            num_of_adds1 = 0
+            num_of_hashtags1 = 0
+            num_of_dollars1 = 0
+            num_of_points1 = 0
+            adds1 = []
+            hashtags1 = []
+            dollars1 = []
+            points1 = []
+            for x in range(10, 20):
+                if ticket[x] == "@" or ticket[x] == "#" or ticket[x] == "$" or ticket[x] == "^":
+                    if ticket[x] == "@":
+                        num_of_adds1 += 1
+                    elif ticket[x] == "#":
+                        num_of_hashtags1 += 1
+                    elif ticket[x] == "$":
+                        num_of_dollars1 += 1
+                    elif ticket[x] == "^":
+                        num_of_points1 += 1
+                    if x == 19:
+                        adds1.append(num_of_adds1)
+                        hashtags1.append(num_of_hashtags1)
+                        dollars1.append(num_of_dollars1)
+                        points1.append(num_of_points1)
+                        num_of_adds1 = 0
+                        num_of_hashtags1 = 0
+                        num_of_dollars1 = 0
+                        num_of_points1 = 0
+                else:
+                    adds1.append(num_of_adds1)
+                    hashtags1.append(num_of_hashtags1)
+                    dollars1.append(num_of_dollars1)
+                    points1.append(num_of_points1)
+                    num_of_adds1 = 0
+                    num_of_hashtags1 = 0
+                    num_of_dollars1 = 0
+                    num_of_points1 = 0
+            num_of_adds1 = max(adds1)
+            num_of_hashtags1 = max(hashtags1)
+            num_of_dollars1 = max(dollars1)
+            num_of_points1 = max(points1)
+
+            if num_of_adds1 >= 6:
+                needed_symbol = "@"
+                right_side_is_valid = True
+            elif num_of_hashtags1 >= 6:
+                needed_symbol = "#"
+                right_side_is_valid = True
+            elif num_of_dollars1 >= 6:
+                needed_symbol = "$"
+                right_side_is_valid = True
+            elif num_of_points1 >= 6:
+                needed_symbol = "^"
+                right_side_is_valid = True
+
+        if left_side_is_valid and right_side_is_valid:
+            if needed_symbol == "@":
+                if num_of_adds == 10 and num_of_adds1 == 10:
+                    print(f'ticket "{ticket}" - 10{needed_symbol} Jackpot!')
+                else:
+                    if num_of_adds < num_of_adds1:
+                        print(f'ticket "{ticket}" - {num_of_adds}{needed_symbol}')
+                    else:
+                        print(f'ticket "{ticket}" - {num_of_adds1}{needed_symbol}')
+            elif needed_symbol == "#":
+                if num_of_hashtags == 10 and num_of_hashtags1 == 10:
+                    print(f'ticket "{ticket}" - 10{needed_symbol} Jackpot!')
+                else:
+                    if num_of_hashtags < num_of_hashtags1:
+                        print(f'ticket "{ticket}" - {num_of_hashtags}{needed_symbol}')
+                    else:
+                        print(f'ticket "{ticket}" - {num_of_hashtags1}{needed_symbol}')
+            elif needed_symbol == "$":
+                if num_of_dollars == 10 and num_of_dollars1 == 10:
+                    print(f'ticket "{ticket}" - 10{needed_symbol} Jackpot!')
+                else:
+                    if num_of_dollars < num_of_dollars1:
+                        print(f'ticket "{ticket}" - {num_of_dollars}{needed_symbol}')
+                    else:
+                        print(f'ticket "{ticket}" - {num_of_dollars1}{needed_symbol}')
+            elif needed_symbol == "^":
+                if num_of_points == 10 and num_of_points1 == 10:
+                    print(f'ticket "{ticket}" - 10{needed_symbol} Jackpot!')
+                else:
+                    if num_of_points < num_of_points1:
+                        print(f'ticket "{ticket}" - {num_of_points}{needed_symbol}')
+                    else:
+                        print(f'ticket "{ticket}" - {num_of_points1}{needed_symbol}')
+        else:
+            print(f'ticket "{ticket}" - no match')
+    else:
+        print("invalid ticket")
+        
