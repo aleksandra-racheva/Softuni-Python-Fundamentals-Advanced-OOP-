@@ -1,0 +1,17 @@
+line = input().split(" -> ")
+staff_book = {}
+
+while len(line) > 1:
+    company = line[0]
+    id = line[1]
+    if company not in staff_book:
+        staff_book[company] = [id]
+    else:
+        if id not in staff_book[company]:
+            staff_book[company].append(id)
+    line = input().split(" -> ")
+
+for key, value in staff_book.items():
+    print(key)
+    for v in value:
+        print(f"-- {v}")
