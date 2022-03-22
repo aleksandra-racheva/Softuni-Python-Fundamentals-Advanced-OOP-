@@ -1,0 +1,24 @@
+initial_list_of_words = input().split(" ")
+palidrome_list = []
+searched_palidrome = input()
+
+reversed_initial_list_of_words = []
+current_reversed_word = ""
+count_of_searched_palidromes = 0
+
+for word in initial_list_of_words:
+    for ch in range(len(word) - 1, -1, -1):
+        current_reversed_word = current_reversed_word + word[ch]
+    reversed_initial_list_of_words.append(current_reversed_word)
+    current_reversed_word = ""
+
+for i in range(len(initial_list_of_words)):
+    if initial_list_of_words[i] == reversed_initial_list_of_words[i]:
+        palidrome_list.append(initial_list_of_words[i])
+print(palidrome_list)
+
+for item in palidrome_list:
+    if item == searched_palidrome:
+        count_of_searched_palidromes += 1
+
+print(f"Found palindrome {count_of_searched_palidromes} times")
