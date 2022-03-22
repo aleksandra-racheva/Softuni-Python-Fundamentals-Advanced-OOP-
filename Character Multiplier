@@ -1,0 +1,37 @@
+def multiply_as_equals(str_a, str_b, sum_total):
+    for i in range(len(str_a)):
+        number = ord(str_a[i]) * ord(str_b[i])
+        sum_total += number
+    return sum_total
+
+
+def multiply_as_not_equals(str1, str2, total_of_sum):
+    if len(str1) < len(str2):
+        smaller_length = str1
+    else:
+        smaller_length = str2
+    for x in range(len(smaller_length)):
+        number1 = ord(str1[x]) * ord(str2[x])
+        total_of_sum += number1
+    if smaller_length == str1:
+        if len(str2) - len(str1) == 1:
+            total_of_sum += ord(str2[len(str2) - 1])
+        else:
+            for y in range(len(smaller_length), len(str2)):
+                total_of_sum += ord(str2[y])
+    else:
+        if len(str1) - len(str2) == 1:
+            total_of_sum += ord(str1[len(str1) - 1])
+        else:
+            for z in range(len(smaller_length), len(str1)):
+                total_of_sum += ord(str1[z])
+    return total_of_sum
+
+
+string1, string2 = input().split(" ")
+total_sum = 0
+
+if len(string1) == len(string2):
+    print(multiply_as_equals(string1, string2, total_sum))
+else:
+    print(multiply_as_not_equals(string1, string2, total_sum))
