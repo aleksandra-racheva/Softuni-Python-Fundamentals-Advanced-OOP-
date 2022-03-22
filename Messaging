@@ -1,0 +1,26 @@
+sequence_of_nums = input().split(" ")
+string = input()
+
+original_str = string
+iterations = 0
+summ = 0
+final_message = ""
+for i in sequence_of_nums:
+    split_i = i
+    for s in range(len(split_i)):
+        summ += int(split_i[s])
+    if summ > len(string):
+        summ -= len(string)
+        index = summ
+    else:
+        index = summ
+    final_message += string[index]
+    string = ""
+    for j in range(len(original_str)):
+        if j != index:
+            string += original_str[j]
+    original_str = string
+    iterations += 1
+    summ = 0
+
+print(final_message)
