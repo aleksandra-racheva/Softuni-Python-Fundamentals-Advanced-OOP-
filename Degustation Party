@@ -1,0 +1,33 @@
+line = input()
+guests_and_their_meal_collection = {}
+unliked_meals = 0
+
+while line != 'Stop':
+    command = line.split('-')
+    like_or_dislike = command[0]
+    guest = command[1]
+    meal = command[2]
+    if like_or_dislike == 'Like':
+        if guest not in guests_and_their_meal_collection.keys():
+            guests_and_their_meal_collection[guest] = [meal]
+        else:
+            if meal not in guests_and_their_meal_collection[guest]:
+                guests_and_their_meal_collection[guest].append(meal)
+    else:
+        if guest not in guests_and_their_meal_collection.keys():
+            print(f"{guest} is not at the party.")
+        else:
+            if meal not in guests_and_their_meal_collection[guest]:
+                print(f"{guest} doesn't have the {meal} in his/her collection.")
+            else:
+                guests_and_their_meal_collection[guest].remove(meal)
+                unliked_meals += 1
+                print(f"{guest} doesn't like the {meal}.")
+
+    line = input()
+
+for key, value in guests_and_their_meal_collection.items():
+    name = key
+    print(f'{name}: {", ".join(value)}')
+
+print(f'Unliked meals: {unliked_meals}')
