@@ -1,0 +1,54 @@
+initial_string = input()
+command = input()
+
+while command != "Finish":
+    current_command = command.split(' ')
+    if current_command[0] == "Replace":
+        current_character = current_command[1]
+        new_character = current_command[2]
+        temporary_string = ''
+        for ch in initial_string:
+            if ch == current_character:
+                temporary_string += new_character
+            else:
+                temporary_string += ch
+        initial_string = temporary_string
+        print(initial_string)
+    elif current_command[0] == "Cut":
+        start_index = int(current_command[1])
+        end_index = int(current_command[2])
+        string_as_list = [z for z in initial_string]
+        if start_index in range(len(initial_string)) and end_index in range(len(initial_string)):
+            for i in range(end_index, start_index - 1, -1):
+                string_as_list.pop(i)
+            initial_string = "".join(string_as_list)
+            print(initial_string)
+        else:
+            print("Invalid indices!")
+    elif current_command[0] == 'Make':
+        current_temp_string = ''
+        if current_command[1] == 'Upper':
+            for x in initial_string:
+                current_temp_string += x.upper()
+        else:
+            for a in initial_string:
+                current_temp_string += a.lower()
+        initial_string = current_temp_string
+        print(initial_string)
+    elif current_command[0] == 'Check':
+        needed_string = current_command[1]
+        if needed_string in initial_string:
+            print(f'Message contains {needed_string}')
+        else:
+            print(f"Message doesn't contain {needed_string}")
+    else:
+        start = int(current_command[1])
+        end = int(current_command[2])
+        current_sum = 0
+        if start in range(len(initial_string)) and end in range(len(initial_string)):
+            for s in range(start, end + 1):
+                current_sum += ord(initial_string[s])
+            print(current_sum)
+        else:
+            print('Invalid indices!')
+    command = input()
