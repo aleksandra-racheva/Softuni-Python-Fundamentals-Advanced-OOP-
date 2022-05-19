@@ -1,0 +1,13 @@
+initial_str = input()
+
+stack = []
+
+for ch in initial_str:
+    stack.append(ch)
+
+reversed_str = ''
+
+while stack:
+    reversed_str += stack.pop()
+
+print(reversed_str)
