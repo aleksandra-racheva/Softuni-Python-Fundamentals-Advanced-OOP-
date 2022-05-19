@@ -1,0 +1,11 @@
+equation = input()
+stack = []
+
+for i in range(len(equation)):
+    if equation[i] == '(':
+        stack.append(i)
+    elif equation[i] == ')':
+        start_index = stack.pop()
+        end_index = i + 1
+        print(equation[start_index:end_index])
+        
