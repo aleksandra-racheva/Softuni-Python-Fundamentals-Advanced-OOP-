@@ -1,0 +1,19 @@
+from collections import deque
+
+list_of_kids_as_str = input()
+toss_count = int(input())
+
+queue_of_kids = deque(list_of_kids_as_str.split(' '))
+
+current_count = 0
+
+while len(queue_of_kids) > 1:
+    current_count += 1
+    current_kid = queue_of_kids.popleft()
+    if current_count < toss_count:
+        queue_of_kids.append(current_kid)
+    else:
+        print(f'Removed {current_kid}')
+        current_count = 0
+
+print(f'Last is {queue_of_kids[0]}')
