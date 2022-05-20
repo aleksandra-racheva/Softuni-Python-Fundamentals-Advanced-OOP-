@@ -1,0 +1,24 @@
+from collections import deque
+
+num_of_pumps = int(input())
+queue = deque()
+
+for _ in range(num_of_pumps):
+    current = input().split(" ")
+    petrol = int(current[0])
+    distance = int(current[1])
+    queue.append([petrol, distance])
+
+for pump in range(num_of_pumps):
+    truck = 0
+    failed = False
+    for petrol, distance in queue:
+        truck += petrol - distance
+        if truck < 0:
+            failed = True
+            break
+    if failed:
+        queue.append(queue.popleft())
+    else:
+        print(pump)
+        break
