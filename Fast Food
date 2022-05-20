@@ -1,0 +1,22 @@
+from collections import deque
+
+food_quantity = int(input())
+queue = deque(int(x) for x in input().split(' '))
+
+print(max(queue))
+
+while food_quantity > 0 and queue:
+    number = queue[0]
+    if food_quantity - number >= 0:
+        food_quantity -= number
+        queue.popleft()
+    else:
+        break
+
+if queue:
+    str_of_leftover_items = ''
+    for item in queue:
+        str_of_leftover_items += str(item) + ' '
+    print(f'Orders left: {str_of_leftover_items}')
+else:
+    print('Orders complete')
