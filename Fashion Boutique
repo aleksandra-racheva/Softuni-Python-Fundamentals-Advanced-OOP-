@@ -1,0 +1,20 @@
+from collections import deque
+
+queue = deque(int(x) for x in input().split(' '))
+original_rack_capacity = int(input())
+num_of_racks = 0
+rack_capacity = original_rack_capacity
+
+while queue:
+    current_piece_of_clothing = queue[0]
+    if rack_capacity - current_piece_of_clothing >= 0:
+        rack_capacity -= current_piece_of_clothing
+        queue.popleft()
+    else:
+        num_of_racks += 1
+        rack_capacity = original_rack_capacity
+    if not queue:
+        num_of_racks += 1
+        break
+
+print(num_of_racks)
