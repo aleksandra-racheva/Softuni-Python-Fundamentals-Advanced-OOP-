@@ -1,0 +1,18 @@
+num_of_guests = int(input())
+guest_set = set()
+
+for _ in range(num_of_guests):
+    current_guest = input()
+    guest_set.add(current_guest)
+
+command = input()
+while command != 'END':
+    guest_set.remove(command)
+    command = input()
+
+vip = [x for x in guest_set if x[0].isdigit()]
+regular = [y for y in guest_set if y[0].isalpha()]
+
+print(len(vip) + len(regular))
+[print(s) for s in sorted(vip)]
+[print(q) for q in sorted(regular)]
