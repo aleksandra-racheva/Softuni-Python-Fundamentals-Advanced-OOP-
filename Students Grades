@@ -1,0 +1,16 @@
+num_of_students = int(input())
+students_and_their_grades = {}
+
+for _ in range(num_of_students):
+    current = input().split(' ')
+    name_of_current_student = current[0]
+    grade_of_current_student = float(current[1])
+    if name_of_current_student not in students_and_their_grades.keys():
+        students_and_their_grades[name_of_current_student] = [grade_of_current_student]
+    else:
+        students_and_their_grades[name_of_current_student].append(grade_of_current_student)
+
+for student, grade in students_and_their_grades.items():
+    current_average = sum(grade) / len(grade)
+    formated_grades = " ".join(f'{g:.2f}' for g in grade)
+    print(f'{student} -> {formated_grades} (avg: {current_average:.2f})')
