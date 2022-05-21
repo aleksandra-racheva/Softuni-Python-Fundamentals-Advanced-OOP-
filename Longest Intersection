@@ -1,0 +1,27 @@
+num_of_ranges = int(input())
+
+set_of_intersections = []
+
+# Creating all intersections
+for _ in range(num_of_ranges):
+    initial_split = input().split('-')
+    first_set_ranges = initial_split[0].split(',')
+    starting_index_of_first_set = int(first_set_ranges[0])
+    end_index_of_first_set = int(first_set_ranges[1])
+    second_set_ranges = initial_split[1].split(',')
+    start_index_of_second_set = int(second_set_ranges[0])
+    end_index_of_second_set = int(second_set_ranges[1])
+
+    first_set = set(range(starting_index_of_first_set, end_index_of_first_set + 1))
+    second_set = set(range(start_index_of_second_set, end_index_of_second_set + 1))
+
+    current_intersection = first_set.intersection(second_set)
+    set_of_intersections.append(current_intersection)
+
+longest_intersection = set()
+
+for intersection in set_of_intersections:
+    if len(intersection) > len(longest_intersection):
+        longest_intersection = intersection
+
+print(f"Longest intersection is {list(longest_intersection)} with length {len(longest_intersection)}")
