@@ -1,0 +1,18 @@
+first_line_of_input = input().split(' ')
+len_first_set = int(first_line_of_input[0])
+len_second_set = int(first_line_of_input[1])
+
+first_set = set()
+second_set = set()
+
+for _ in range(len_first_set):
+    num = int(input())
+    first_set.add(num)
+
+for t in range(len_second_set):
+    num1 = int(input())
+    second_set.add(num1)
+
+result_set = first_set.intersection(second_set)
+
+[print(x) for x in result_set]
