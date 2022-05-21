@@ -1,0 +1,24 @@
+bracket_dict = {"(": ")", "{": "}", "[": "]"}
+expression = input()
+
+opening_brackets = []
+is_balanced = True
+
+for ch in expression:
+    if ch in '({[':
+        opening_brackets.append(ch)
+    elif not opening_brackets:
+        is_balanced = False
+        break
+    else:
+        last_opening_bracket = opening_brackets.pop()
+        if bracket_dict[last_opening_bracket] != ch:
+            is_balanced = False
+            break
+
+if is_balanced and opening_brackets:
+    print('NO')
+elif not is_balanced:
+    print('NO')
+else:
+    print('YES')
