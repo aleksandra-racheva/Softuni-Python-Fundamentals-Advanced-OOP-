@@ -1,0 +1,12 @@
+count_dict = {}
+
+grades = [float(x) for x in input().split(' ')]
+
+for grade in grades:
+    if grade not in count_dict.keys():
+        count_dict[grade] = 1
+    else:
+        count_dict[grade] += 1
+
+for current_grade, count in count_dict.items():
+    print(f"{current_grade:.1f} - {count} times")
