@@ -1,0 +1,16 @@
+num_of_commands = int(input())
+parking_lot = set()
+
+for _ in range(num_of_commands):
+    current = input().split(', ')
+    command = current[0]
+    plate_num = current[1]
+    if command == 'IN' and plate_num not in parking_lot:
+        parking_lot.add(plate_num)
+    elif command == 'OUT' and plate_num in parking_lot:
+        parking_lot.remove(plate_num)
+
+if parking_lot:
+    [print(p) for p in parking_lot]
+else:
+    print("Parking Lot is Empty")
