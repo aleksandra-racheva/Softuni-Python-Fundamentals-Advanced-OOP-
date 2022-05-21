@@ -1,0 +1,28 @@
+number_of_names = int(input())
+
+odd = set()
+even = set()
+
+for i in range(1, number_of_names + 1):
+    current_name = input()
+    current_ascii_sum = 0
+    for ch in current_name:
+        current_ascii_sum += ord(ch)
+    current_devision = current_ascii_sum // i
+    if current_devision % 2 == 0:
+        even.add(current_devision)
+    else:
+        odd.add(current_devision)
+
+sum_of_odd_set = sum(odd)
+sum_of_even_set = sum(even)
+
+if sum_of_odd_set == sum_of_even_set:
+    union = odd.union(even)
+    print(", ".join([str(z) for z in union]))
+elif sum_of_odd_set > sum_of_even_set:
+    diff_values = odd.difference(even)
+    print(", ".join([str(a) for a in diff_values]))
+else:
+    symmetric_diff = odd.symmetric_difference(even)
+    print(", ".join([str(r) for r in symmetric_diff]))
