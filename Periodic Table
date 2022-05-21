@@ -1,0 +1,10 @@
+num_of_rows = int(input())
+
+periodic_set = set()
+
+for _ in range(num_of_rows):
+    current_line = input().split(' ')
+    for i in current_line:
+        periodic_set.add(i)
+
+[print(x) for x in periodic_set]
