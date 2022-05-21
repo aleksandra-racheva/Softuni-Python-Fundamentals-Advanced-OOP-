@@ -1,0 +1,10 @@
+num_of_names = int(input())
+set_of_names = []
+
+for _ in range(num_of_names):
+    name = input()
+    set_of_names.append(name)
+
+set_of_names = set(set_of_names)
+
+[print(sets) for sets in set_of_names]
