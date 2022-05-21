@@ -1,0 +1,12 @@
+letters_and_their_counts = {}
+phrase = input()
+
+for ch in phrase:
+    if ch not in letters_and_their_counts.keys():
+        letters_and_their_counts[ch] = 1
+    else:
+        letters_and_their_counts[ch] += 1
+
+
+for character, count in sorted(letters_and_their_counts.items()):
+    print(f'{character}: {count} time/s')
