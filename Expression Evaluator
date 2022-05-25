@@ -1,0 +1,20 @@
+from collections import deque
+from math import floor
+
+expression = input().split()
+queue = deque()
+operator_dictionary = {'+': lambda a, b: a + b, '-': lambda a, b: a - b, '*': lambda a, b: a * b,
+                       '/': lambda a, b: floor(a / b)}
+
+for ch in range(len(expression)):
+    if expression[ch].isdigit() or (expression[ch].startswith('-') and len(expression[ch]) > 1):
+        queue.append(int(expression[ch]))
+    elif expression[ch] in operator_dictionary.keys():
+        while len(queue) > 1:
+            num1 = queue.popleft()
+            num2 = queue.popleft()
+            current_end_number = operator_dictionary[expression[ch]]
+            queue.appendleft(current_end_number(num1, num2))
+    if ch == len(expression) - 1 and len(queue) == 1:
+        print(queue.pop())
+        break
