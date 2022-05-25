@@ -1,0 +1,28 @@
+sequence1 = [int(p) for p in input().split(' ')]
+sequence2 = [int(g) for g in input().split(' ')]
+num_of_commands = int(input())
+sequence1 = set(sequence1)
+sequence2 = set(sequence2)
+
+for _ in range(num_of_commands):
+    command = input()
+    if command.startswith('Add First '):
+        sequence1 = sequence1.union([int(r) for r in command.split()[2:]])
+    elif command.startswith('Add Second '):
+        sequence2 = sequence2.union([int(l) for l in command.split()[2:]])
+    elif command.startswith('Remove First '):
+        sequence1 = sequence1.difference([int(o) for o in command.split()[2:]])
+    elif command.startswith('Remove Second '):
+        sequence2 = sequence2.difference([int(k) for k in command.split()[2:]])
+    else:
+        subset = sequence1.issubset(sequence2)
+        subset1 = sequence2.issubset(sequence1)
+        if subset or subset1:
+            print('True')
+        else:
+            print('False')
+
+sequence1 = [str(m) for m in sorted(sequence1)]
+sequence2 = [str(w) for w in sorted(sequence2)]
+print(", ".join(sequence1))
+print(', '.join(sequence2))
