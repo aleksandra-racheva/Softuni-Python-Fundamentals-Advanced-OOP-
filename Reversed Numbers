@@ -1,0 +1,11 @@
+from collections import deque
+
+nums = input().split(' ')
+numbers = deque()
+
+for n in nums:
+    numbers.append(n)
+    
+    
+for x in range(len(numbers)):
+    print(numbers.pop(), end=' ')
