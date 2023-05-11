@@ -1,0 +1,10 @@
+number = int(input())
+data = set()
+
+for x in range(number):
+    name = input()
+    data.add(name)
+
+for n in data:
+    print(n)
+    
