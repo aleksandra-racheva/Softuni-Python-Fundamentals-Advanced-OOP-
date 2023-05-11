@@ -1,0 +1,19 @@
+from collections import deque
+qtty_of_food = int(input())
+food = deque([int(x) for x in input().split(' ')])
+
+
+print(max(food))
+orders_left = ''
+
+for z in food.copy():
+    if qtty_of_food >= z:
+        food.popleft()
+        qtty_of_food -= z
+    else:
+        for g in food:
+            orders_left += str(g) + ' '
+        print(f'Orders left: {orders_left[:-1]}')
+        break
+else:
+    print("Orders complete")
