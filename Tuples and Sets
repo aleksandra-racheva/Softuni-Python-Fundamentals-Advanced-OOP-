@@ -1,0 +1,11 @@
+numbers = tuple(float(x) for x in input().split(' '))
+dictionary = {}
+
+for n in numbers:
+    if n not in dictionary.keys():
+        dictionary[n] = numbers.count(n)
+    else:
+        dictionary[n] = numbers.count(n)
+
+for k,v in dictionary.items():
+    print(f"{k} - {v} times")
