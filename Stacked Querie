@@ -1,0 +1,24 @@
+num_of_lines = int(input())
+stack = []
+
+for x in range(num_of_lines):
+    command = input().split(' ')
+    if command[0] == '1':
+        stack.append(command[1])
+    elif command[0] == '2':
+        if len(stack) >= 1:
+            stack.pop()
+    elif command[0] == "3":
+        stack = [int(y) for y in stack]
+        current_max = max(stack)
+        print(current_max)
+    else:
+        stack = [int(y) for y in stack]
+        current_min = min(stack)
+        print(current_min)
+
+string = ''
+for s in range(len(stack)):
+    string += str(stack.pop()) + ", "
+
+print(string[:-2])
