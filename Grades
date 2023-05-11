@@ -1,0 +1,17 @@
+from statistics import mean
+
+num_of_info = int(input())
+student_dict = {}
+
+for _ in range(num_of_info):
+    student, grade = input().split(' ')
+    grade = float(grade)
+    if student not in student_dict.keys():
+        student_dict[student] = [grade]
+    else:
+        student_dict[student].append(grade)
+
+for k,v in student_dict.items():
+    current_avg = mean(v)
+    print(f'{k} -> {" ".join([str(f"{grade:.2f}") for grade in v])} (avg: {current_avg:.2f})')
+    
