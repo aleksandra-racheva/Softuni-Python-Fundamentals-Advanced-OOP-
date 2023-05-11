@@ -1,0 +1,19 @@
+from collections import deque
+
+pumps = deque([[int(x) for x in input().split()] for _ in range(int(input()))])
+pumps_data = pumps.copy()
+gas = 0
+index = 0
+
+while pumps_data:
+    petrol, distance = pumps_data.popleft()
+    gas += petrol
+    if gas >= distance:
+        gas -= distance
+    else:
+        pumps.rotate(-1)
+        pumps_data = pumps.copy()
+        index += 1
+        gas = 0
+
+print(index)
