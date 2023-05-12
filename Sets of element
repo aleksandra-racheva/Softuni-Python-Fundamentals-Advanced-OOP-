@@ -1,0 +1,5 @@
+n, m = input().split()
+a = set(input() for num in range(int(n)))
+b = set(input() for number in range(int(m)))
+
+print(*a.intersection(b), sep="\n")
