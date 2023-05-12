@@ -1,0 +1,11 @@
+string = sorted([x for x in input()])
+data = tuple(y for y in string)
+dictionary = {}
+
+for l in string:
+    if l not in dictionary.keys():
+        dictionary[l] = data.count(l)
+
+for k,v in dictionary.items():
+    print(f'{k}: {v} time/s')
+    
