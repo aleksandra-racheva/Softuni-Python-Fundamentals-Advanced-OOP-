@@ -1,0 +1,9 @@
+number = int(input())
+info = set()
+
+for x in range(number):
+    data = input().split()
+    for n in data:
+        info.add(n)
+        
+print(*info, sep='\n')
