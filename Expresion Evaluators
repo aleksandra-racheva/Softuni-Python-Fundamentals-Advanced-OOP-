@@ -1,0 +1,58 @@
+from collections import deque
+equation = deque(input().split())
+to_work_with = equation.copy()
+while equation:
+    current_list_of_digits = []
+    if len(equation) == 1:
+        print(equation.pop())
+        break
+    for digit in to_work_with:
+        if str(digit) not in '+-*/':
+            current_list_of_digits.append(int(digit))
+            equation.popleft()
+        else:
+            if digit == '-':
+                equation.popleft()
+                x = current_list_of_digits[0] - current_list_of_digits[1]
+                current_list_of_digits.pop(0)
+                if len(current_list_of_digits) >= 1:
+                    current_list_of_digits.pop(0)
+                result = x
+                while current_list_of_digits:
+                    result = x - current_list_of_digits.pop(0)
+                equation.appendleft(result)
+                break
+            elif digit == "+":
+                equation.popleft()
+                x = current_list_of_digits[0] + current_list_of_digits[1]
+                current_list_of_digits.pop(0)
+                if len(current_list_of_digits) >= 1:
+                    current_list_of_digits.pop(0)
+                result = x
+                while current_list_of_digits:
+                    result = x + current_list_of_digits.pop(0)
+                equation.appendleft(result)
+                break
+            elif digit == "*":
+                equation.popleft()
+                x = current_list_of_digits[0] * current_list_of_digits[1]
+                current_list_of_digits.pop(0)
+                if len(current_list_of_digits) >= 1:
+                    current_list_of_digits.pop(0)
+                result = x
+                while current_list_of_digits:
+                    result = x * current_list_of_digits.pop(0)
+                equation.appendleft(result)
+                break
+            elif digit == "/":
+                equation.popleft()
+                x = current_list_of_digits[0] // current_list_of_digits[1]
+                current_list_of_digits.pop(0)
+                if len(current_list_of_digits) >= 1:
+                    current_list_of_digits.pop(0)
+                result = x
+                while current_list_of_digits:
+                    result = x // current_list_of_digits.pop(0)
+                equation.appendleft(result)
+                break
+    to_work_with = equation.copy()
