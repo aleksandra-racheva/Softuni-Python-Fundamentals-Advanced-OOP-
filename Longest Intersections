@@ -1,0 +1,24 @@
+number = int(input())
+list_of_intersections = []
+current_max = 0
+winning_set = set()
+
+for _ in range(number):
+    first_set, second_set = input().split('-')
+    start_index_of_set_one, end_index_of_set_one = first_set.split(',')
+    start_index_of_set_two, end_index_of_set_two = second_set.split(',')
+    start_index_of_set_one = int(start_index_of_set_one)
+    start_index_of_set_two = int(start_index_of_set_two)
+    end_index_of_set_one = int(end_index_of_set_one)
+    end_index_of_set_two = int(end_index_of_set_two)
+    set_one = set(i for i in range(start_index_of_set_one, end_index_of_set_one + 1))
+    set_two = set(x for x in range(start_index_of_set_two, end_index_of_set_two + 1))
+    current_intersection = set_one.intersection(set_two)
+    list_of_intersections.append(current_intersection)
+else:
+    for s in list_of_intersections:
+        if len(s) > current_max:
+            current_max = len(s)
+            winning_set = s
+
+print(f'Longest intersection is {list(winning_set)} with length {current_max}')
