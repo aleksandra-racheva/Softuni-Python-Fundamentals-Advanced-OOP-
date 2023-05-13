@@ -1,0 +1,23 @@
+number = int(input())
+odd_set = set()
+even_set = set()
+
+for a in range(number):
+    name = input()
+    current_ascii_sum = 0
+    for n in name:
+        current_ascii_sum += ord(n)
+    if ((current_ascii_sum // (a + 1)) % 2) != 0:
+        odd_set.add(current_ascii_sum // (a + 1))
+    elif ((current_ascii_sum // (a + 1)) % 2) == 0:
+        even_set.add(current_ascii_sum // (a + 1))
+else:
+    if sum(odd_set) > sum(even_set):
+        to_convert = [str(x) for x in odd_set.difference(even_set)]
+        print(", ".join(to_convert))
+    elif sum(odd_set) < sum(even_set):
+        to_convert = [str(y) for y in odd_set.symmetric_difference(even_set)]
+        print(", ".join(to_convert))
+    elif sum(odd_set) == sum(even_set):
+        to_convert = [str(z) for z in odd_set.union(even_set)]
+        print(", ".join(to_convert))
