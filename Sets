@@ -1,0 +1,47 @@
+set_one = set(int(x) for x in input().split())
+set_two = set(int(y) for y in input().split())
+num_of_commands = int(input())
+
+for _ in range(num_of_commands):
+    command = input()
+    if "Add First" in command:
+        command = command.split(' ')
+        command.remove("Add")
+        command.remove("First")
+        for number in command:
+            set_one.add(int(number))
+    elif 'Add Second' in command:
+        command = command.split(' ')
+        command.remove("Add")
+        command.remove("Second")
+        for num in command:
+            set_two.add(int(num))
+    elif 'Remove First' in command:
+        command = command.split(' ')
+        command.remove("Remove")
+        command.remove("First")
+        for n in command:
+            if int(n) in set_one:
+                set_one.remove(int(n))
+    elif 'Remove Second' in command:
+        command = command.split(' ')
+        command.remove("Remove")
+        command.remove("Second")
+        for x in command:
+            if int(x) in set_two:
+                 set_two.remove(int(x))
+    else:
+        if set_two.issubset(set_one):
+            print('True')
+        else:
+            print('False')
+else:
+    set_one = list(sorted(set_one))
+    set_two = list(sorted(set_two))
+    set_one = [str(s) for s in set_one]
+    set_two = [str(z) for z in set_two]
+    if set_one:
+        print(', '.join(set_one))
+    if set_two:
+        print(", ".join(set_two))
+        
