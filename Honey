@@ -1,0 +1,31 @@
+from collections import deque
+
+bees = deque(int(x) for x in input().split())
+nectar = deque(int(y) for y in input().split())
+operators = deque(z for z in input().split())
+sum_honey = 0
+
+while bees and nectar:
+    current_bee_num = bees.popleft()
+    current_nectar_num = nectar.pop()
+    if current_bee_num <= current_nectar_num:
+        current_operator = operators.popleft()
+        if current_operator == '+':
+            sum_honey += abs(current_bee_num + current_nectar_num)
+        elif current_operator == '-':
+            sum_honey += abs(current_bee_num - current_nectar_num)
+        elif current_operator == '/' and current_nectar_num > 0:
+            sum_honey += abs(current_bee_num / current_nectar_num)
+        elif current_operator == '*':
+            sum_honey += abs(current_bee_num * current_nectar_num)
+    elif current_bee_num > current_nectar_num:
+        bees.appendleft(current_bee_num)
+
+print(f'Total honey made: {sum_honey}')
+
+if bees:
+    bees = deque(str(g) for g in bees)
+    print(f'Bees left: {", ".join(bees)}')
+elif nectar:
+    nectar = deque(str(a) for a in nectar)
+    print(f"Nectar left: {', '.join(nectar)}")
