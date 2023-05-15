@@ -1,0 +1,68 @@
+from collections import deque
+
+materials = deque(int(x) for x in input().split())
+magic_level = deque(int(y) for y in input().split())
+final_dict = {}
+
+doll = 150
+wooden_train = 250
+teddy_bear = 300
+bicycle = 400
+count_dolls = 0
+count_trains = 0
+count_bears = 0
+count_bikes = 0
+
+while materials and magic_level:
+    current_material = materials.pop()
+    current_magic_level = magic_level.popleft()
+    current_result = current_material * current_magic_level
+    if current_magic_level == 0 and current_material == 0:
+        continue
+    if current_material == 0:
+        magic_level.appendleft(current_magic_level)
+        continue
+    if current_magic_level == 0:
+        materials.append(current_material)
+        continue
+    if current_result == doll:
+        count_dolls += 1
+    elif current_result == wooden_train:
+        count_trains += 1
+    elif current_result == teddy_bear:
+        count_bears += 1
+    elif current_result == bicycle:
+        count_bikes += 1
+    elif current_result > 0:
+        materials.append(current_material + 15)
+    elif current_result < 0:
+        current_result = current_material + current_magic_level
+        materials.append(current_result)
+    if count_dolls > 0:
+        final_dict['Doll'] = count_dolls
+    if count_trains > 0:
+        final_dict['Wooden train'] = count_trains
+    if count_bears > 0:
+        final_dict['Teddy bear'] = count_bears
+    if count_bikes > 0:
+        final_dict['Bicycle'] = count_bikes
+
+sorted_dict = {key: value for key, value in sorted(final_dict.items())}
+
+if ('Doll' in final_dict.keys() and "Wooden train" in final_dict.keys()) or ('Teddy bear' in final_dict.keys() and 'Bicycle' in final_dict.keys()):
+    print('The presents are crafted! Merry Christmas!')
+else:
+    print('No presents this Christmas!')
+
+if materials:
+    materials.reverse()
+    materials = deque(str(g) for g in materials)
+    print(f'Materials left: {", ".join(materials)}')
+
+if magic_level:
+    magic_level = deque(str(a) for a in magic_level)
+    print(f'Magic left: {", ".join(magic_level)}')
+
+for k,v in sorted_dict.items():
+    print(f"{k}: {v}")
+    
