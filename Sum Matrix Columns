@@ -1,0 +1,11 @@
+rows, cols = [int(x) for x in input().split(', ')]
+
+matrix = [[int(el) for el in input().split()] for row in range(rows)]
+flatten = []
+
+for m in range(cols):
+    current_sum = 0
+    for r in range(rows):
+        current_sum += matrix[r][m]
+    print(current_sum)
+    
