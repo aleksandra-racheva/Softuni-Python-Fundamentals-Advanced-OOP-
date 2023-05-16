@@ -1,0 +1,9 @@
+rows = int(input())
+
+matrix = [[int(el) for el in input().split()] for row in range(rows)]
+current_sum = 0
+
+for m in range(rows):
+    current_sum += matrix[m][m]
+
+print(current_sum)
