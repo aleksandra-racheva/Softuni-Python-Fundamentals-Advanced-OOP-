@@ -1,0 +1,22 @@
+rows = int(input())
+
+matrix = []
+
+for r in range(rows):
+    current = list(input())
+    matrix.append(current)
+
+searched_sign = input()
+found = False
+
+for row in range(rows):
+    for el in range(len(matrix[row])):
+        if searched_sign == matrix[row][el]:
+            found = True
+            print(f'({row}, {el})')
+            break
+    if found is True:
+        break
+else:
+    print(f'{searched_sign} does not occur in the matrix')
+    
