@@ -1,0 +1,9 @@
+rows, cols = [int(x) for x in input().split(', ')]
+
+matrix = [[int(el) for el in input().split(', ')] for row in range(rows)]
+
+list_of_sums = [sum(matrix[i]) for i in range(len(matrix))]
+final_sum = sum(list_of_sums)
+
+print(final_sum)
+print(matrix)
