@@ -1,0 +1,9 @@
+rows = int(input())
+
+matrix = [[int(el) for el in input().split(', ')] for row in range(rows)]
+flatten = []
+
+for m in range(len(matrix)):
+    current = flatten.extend(matrix[m])
+    
+print(flatten)
