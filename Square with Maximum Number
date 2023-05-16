@@ -1,0 +1,22 @@
+rows, cols = [int(x) for x in input().split(', ')]
+
+matrix = [[int(el) for el in input().split(', ')] for el in range(rows)]
+
+submatrix = []
+max_sum = float('-inf')
+
+for row in range(rows - 1):
+    for col in range(cols - 1):
+        current_element = matrix[row][col]
+        element_below = matrix[row + 1][col]
+        element_next = matrix[row][col + 1]
+        diagonal_element = matrix[row + 1][col + 1]
+        sum_elements = current_element + element_below + element_next + diagonal_element
+
+        if max_sum < sum_elements:
+            max_sum = sum_elements
+            submatrix = [[current_element, element_next], [element_below, diagonal_element]]
+
+print(*(submatrix[0]))
+print(*(submatrix[1]))
+print(max_sum)
