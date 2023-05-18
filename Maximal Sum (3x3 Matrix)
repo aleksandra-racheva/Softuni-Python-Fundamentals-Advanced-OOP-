@@ -1,0 +1,30 @@
+rows, cols = [int(x) for x in input().split(' ')]
+
+matrix = [[int(el) for el in input().split(' ')] for el in range(rows)]
+
+count = 0
+submatrix = []
+max_sum = float('-inf')
+
+for row in range(rows - 2):
+    for col in range(cols - 2):
+        current_element = matrix[row][col]
+        element_below = matrix[row + 1][col]
+        second_below_element = matrix[row + 2][col]
+        element_next = matrix[row][col + 1]
+        second_next_element = matrix[row + 1][col + 1]
+        third_next_element = matrix[row + 2][col + 1]
+        final_next = matrix[row][col + 2]
+        final_second = matrix[row + 1][col + 2]
+        final_third = matrix[row + 2][col + 2]
+        current_sum = current_element + element_next + second_next_element + element_below + second_below_element + third_next_element + final_next + final_second + final_third
+        if current_sum > max_sum:
+            max_sum = current_sum
+            submatrix = [[current_element, element_next, final_next], [element_below, second_next_element, final_second], [second_below_element, third_next_element, final_third]]
+
+print(f'Sum = {max_sum}')
+
+for line in submatrix:
+    for l in line:
+        print(l, end=' ')
+    print()
