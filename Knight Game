@@ -1,0 +1,36 @@
+rows = int(input())
+matrix = [[x for x in list(input())]for _ in range(rows)]
+removed_knights = 0
+posititons = (
+    (-2, -1),
+    (-2, 1),
+    (-1, 2),
+    (-1, -2),
+    (2, 1),
+    (2, -1),
+    (1, 2),
+    (1, -2),
+)
+
+while True:
+    max_attacks = 0
+    pos_of_knight_with_max_attack = []
+    for row in range(rows):
+        for col in range(rows):
+            if matrix[row][col] == 'K':
+                attacks = 0
+                for pos in posititons:
+                    pos_row, pos_col = row + pos[0], col + pos[1]
+                    if 0 <= pos_row < rows and 0 <= pos_col < rows:
+                        if matrix[pos_row][pos_col] == 'K':
+                            attacks += 1
+                if attacks > max_attacks:
+                    max_attacks = attacks
+                    pos_of_knight_with_max_attack = [row, col]
+    if pos_of_knight_with_max_attack:
+        matrix[pos_of_knight_with_max_attack[0]][pos_of_knight_with_max_attack[1]] = '0'
+        removed_knights += 1
+    else:
+        break
+
+print(removed_knights)
