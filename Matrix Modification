@@ -1,0 +1,21 @@
+rows = int(input())
+matrix = [[int(x) for x in input().split()]for _ in range(rows)]
+command = input()
+
+while command != 'END':
+    current_command, *info = [int(x) if x.isdigit() else x for x in command.split()]
+    row, col, value = info
+    if 0 <= int(row) < rows and 0 <= int(col) < len(matrix[row]):
+        if current_command == 'Add':
+            matrix[row][col] += value
+        elif current_command == 'Subtract':
+            matrix[row][col] -= value
+    else:
+        print('Invalid coordinates')
+    command = input()
+
+for line in matrix:
+    for l in line:
+        print(l, end=' ')
+    print()
+    
