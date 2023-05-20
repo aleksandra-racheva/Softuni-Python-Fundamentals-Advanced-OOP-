@@ -1,0 +1,33 @@
+rows_and_cols = int(input())
+matrix = [[x for x in input().split()] for _ in range(rows_and_cols)]
+alice_pos = []
+tea = 0
+positions = {'up': (-1, 0), 'down': (1, 0), 'left': (0, -1), 'right': (0, 1)}
+
+
+for line in range(len(matrix)):
+    if 'A' in matrix[line]:
+        alice_pos = [line, matrix[line].index('A')]
+        matrix[alice_pos[0]][alice_pos[1]] = "*"
+
+while True:
+    command = input()
+    row, col = alice_pos[0] + positions[command][0], alice_pos[1] + positions[command][1]
+
+    if 0 <= row < rows_and_cols and 0 <= col < rows_and_cols:
+        if matrix[row][col] == "R":
+            matrix[row][col] = '*'
+            print("Alice didn't make it to the tea party.")
+            break
+        alice_pos = [row, col]
+        if matrix[row][col].isdigit():
+            tea += int(matrix[row][col])
+        matrix[row][col] = '*'
+    else:
+        print("Alice didn't make it to the tea party.")
+        break
+    if tea >= 10:
+        print('She did it! She went to the party.')
+        break
+
+print(*[' '.join(row) for row in matrix], sep='\n')
