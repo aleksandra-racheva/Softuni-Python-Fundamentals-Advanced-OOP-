@@ -1,0 +1,36 @@
+rows_and_cols = int(input())
+matrix = [[x for x in input().split()] for _ in range(rows_and_cols)]
+best_path = []
+bunny_pos = []
+best_direction = None
+max_collected_eggs = 0
+
+directions = {'up': (-1, 0), 'down': (1, 0), 'left': (0, -1), 'right': (0, 1)}
+
+for row in range(rows_and_cols):
+    if "B" in matrix[row]:
+        bunny_pos = [row, matrix[row].index('B')]
+
+for direction, position in directions.items():
+    row, col = [int(bunny_pos[0]) + int(position[0]), int(bunny_pos[1]) + int(position[1])]
+    path = []
+    collected_eggs = 0
+
+    while 0 <= row < rows_and_cols and 0 <= col < rows_and_cols:
+        if matrix[row][col] == 'X':
+            break
+
+        collected_eggs += int(matrix[row][col])
+        path.append([row, col])
+
+        row += position[0]
+        col += position[1]
+
+        if collected_eggs >= max_collected_eggs:
+            max_collected_eggs = collected_eggs
+            best_direction = direction
+            best_path = path
+
+print(best_direction)
+print(*best_path, sep='\n')
+print(max_collected_eggs)
