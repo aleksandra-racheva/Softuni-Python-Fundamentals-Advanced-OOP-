@@ -1,0 +1,13 @@
+def age_assignment(*args, **kwargs):
+    list_of_names = [n for n in args]
+    final_dict = dict()
+    final_str = ''
+    for k, v in kwargs.items():
+        for name in list_of_names:
+            if k == name[0]:
+                final_dict[name] = v
+    final_dict = dict(sorted(final_dict.items(), key=lambda x: x[0]))
+    for key, value in final_dict.items():
+        final_str += f'{key} is {value} years old.' + '\n'
+    return final_str.strip()
+    
