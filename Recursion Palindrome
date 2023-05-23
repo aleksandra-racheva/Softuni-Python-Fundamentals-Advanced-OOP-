@@ -1,0 +1,7 @@
+def palindrome(string, zero):
+    reversed_str = string[::-1]
+    if reversed_str == string:
+        return f'{string} is a palindrome'
+    else:
+        return f'{string} is not a palindrome'
+        
