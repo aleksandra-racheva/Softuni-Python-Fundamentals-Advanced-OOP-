@@ -1,0 +1,20 @@
+def negative_vs_positive(*args):
+    sum_negatives = 0
+    sum_positive = 0
+    for num in args:
+        for n in num:
+            if n < 0:
+                sum_negatives += n
+            elif n > 0:
+                sum_positive += n
+    print(sum_negatives)
+    print(sum_positive)
+    if abs(sum_negatives) > abs(sum_positive):
+        print('The negatives are stronger than the positives')
+    elif abs(sum_negatives) < abs(sum_positive):
+        print('The positives are stronger than the negatives')
+
+
+numbers = [int(x) for x in input().split()]
+
+negative_vs_positive(numbers)
