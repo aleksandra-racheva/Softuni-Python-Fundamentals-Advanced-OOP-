@@ -1,0 +1,14 @@
+def movie_organizer(*args):
+    movie_dict = dict()
+    final_string = ''
+    for movie, genre in args:
+        if genre not in movie_dict.keys():
+            movie_dict[genre] = [movie]
+        else:
+            movie_dict[genre].append(movie)
+    movie_dict = dict(sorted(movie_dict.items(), key=lambda x: (-len(x[1]), x[0])))
+    for k, v in movie_dict.items():
+        final_string += f'{k} - {len(v)}' + '\n'
+        for value in sorted(v):
+            final_string += f'* {value}' + '\n'
+    return final_string
