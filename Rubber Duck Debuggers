@@ -1,0 +1,30 @@
+from collections import deque
+
+time_to_complete_task_list = deque(int(x) for x in input().split())
+tasks = deque(int(x) for x in input().split())
+darth_vader_ducky = 0
+thor_ducky = 0
+big_blue_rubber_ducky = 0
+small_yellow_rubber_ducky = 0
+
+while time_to_complete_task_list and tasks:
+    current_time = time_to_complete_task_list.popleft()
+    current_task = tasks.pop()
+    result = current_task * current_time
+    if 0 < result <= 60:
+        darth_vader_ducky += 1
+    elif 61 <= result <= 120:
+        thor_ducky += 1
+    elif 121 <= result <= 180:
+        big_blue_rubber_ducky += 1
+    elif 181 <= result <= 240:
+        small_yellow_rubber_ducky += 1
+    elif result > 240:
+        tasks.append(current_task - 2)
+        time_to_complete_task_list.append(current_time)
+
+print("Congratulations, all tasks have been completed! Rubber ducks rewarded:")
+print(f"Darth Vader Ducky: {darth_vader_ducky}")
+print(f"Thor Ducky: {thor_ducky}")
+print(f"Big Blue Rubber Ducky: {big_blue_rubber_ducky}")
+print(f"Small Yellow Rubber Ducky: {small_yellow_rubber_ducky}")
