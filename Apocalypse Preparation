@@ -1,0 +1,56 @@
+from collections import deque
+
+textiles = deque(int(x) for x in input().split())
+meds = deque(int(z) for z in input().split())
+
+patch = 30
+bandage = 40
+medkit = 100
+num_patches = 0
+num_bandages = 0
+num_medkits = 0
+dictionary = {}
+
+while textiles and meds:
+    current_textile = textiles.popleft()
+    current_med = meds.pop()
+    result = current_textile + current_med
+    if result == patch:
+        num_patches += 1
+    elif result == bandage:
+        num_bandages += 1
+    elif result == medkit:
+        num_medkits += 1
+    elif result > medkit:
+        num_medkits += 1
+        meds.append(meds.pop() + (result - medkit))
+    else:
+        meds.append(current_med + 10)
+
+
+if meds and not textiles:
+    print("Textiles are empty.")
+elif textiles and not meds:
+    print("Medicaments are empty.")
+elif not meds and not textiles:
+    print("Textiles and medicaments are both empty.")
+
+if num_bandages > 0:
+    dictionary['Bandage'] = num_bandages
+if num_medkits > 0:
+    dictionary['MedKit'] = num_medkits
+if num_patches > 0:
+    dictionary['Patch'] = num_patches
+
+dictionary = dict(sorted(dictionary.items(), key=lambda x: (-x[1], x[0])))
+
+for k, v in dictionary.items():
+    print(f'{k} - {v}')
+
+if meds:
+    meds = reversed(meds)
+    meds = [str(y) for y in meds]
+    print(f'Medicaments left: {", ".join(meds)}')
+if textiles:
+    textiles = [str(t) for t in textiles]
+    print(f'Textiles left: {", ".join(textiles)}')
