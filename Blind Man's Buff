@@ -1,0 +1,45 @@
+from collections import deque
+
+rows, cols = [int(x) for x in input().split()]
+matrix = [[z for z in input().split()] for _ in range(rows)]
+my_position = []
+touched_opponents = 0
+moves = 0
+directions = {'up': [-1, 0], 'down': [1, 0], 'left': [0, -1], 'right': [0, 1]}
+commands = []
+command = input()
+touched_all = False
+
+while command != 'Finish':
+    commands.append(command)
+    command = input()
+
+for line in range(len(matrix)):
+    if 'B' in matrix[line]:
+        my_position = [line, matrix[line].index('B')]
+
+while touched_opponents < 3 and commands:
+    for current_command in commands.copy():
+        row, col = my_position[0] + directions[current_command][0], my_position[1] + directions[current_command][1]
+        if 0 <= row < rows and 0 <= col < cols:
+            if matrix[row][col] == 'P':
+                moves += 1
+                touched_opponents += 1
+                matrix[my_position[0]][my_position[1]] = '-'
+                my_position = [row, col]
+                matrix[row][col] = 'B'
+                if touched_opponents == 3:
+                    touched_all = True
+                    break
+            elif matrix[row][col] == '-':
+                moves += 1
+                matrix[my_position[0]][my_position[1]] = '-'
+                my_position = [row, col]
+                matrix[row][col] = 'B'
+        commands.remove(current_command)
+
+    if touched_all:
+        break
+
+print("Game over!")
+print(f"Touched opponents: {touched_opponents} Moves made: {moves}")
