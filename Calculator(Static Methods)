@@ -1,0 +1,28 @@
+class Calculator:
+    @staticmethod
+    def add(*args):
+        return sum(args)
+
+    @staticmethod
+    def multiply(*args):
+        args = [a for a in args]
+        result = args[0] * args[1]
+        for idx in range(2, len(args)):
+            result = result * args[idx]
+        return result
+
+    @staticmethod
+    def divide(*args):
+        args = [a for a in args]
+        result = args[0] / args[1]
+        for idx in range(2, len(args)):
+            result = result / args[idx]
+        return result
+
+    @staticmethod
+    def subtract(*args):
+        args = [a for a in args]
+        result = args[0] - args[1]
+        for idx in range(2, len(args)):
+            result = result - args[idx]
+        return result
