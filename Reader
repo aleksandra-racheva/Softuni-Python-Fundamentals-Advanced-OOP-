@@ -1,0 +1,4 @@
+def read_next(*args):
+    for sequence in args:
+        for el in sequence:
+            yield el
