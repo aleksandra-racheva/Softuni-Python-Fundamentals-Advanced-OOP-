@@ -1,0 +1,9 @@
+import functools
+
+
+def vowel_filter(function):
+    @functools.wraps(function)
+    def wrapper():
+        result = [n for n in function() if n in "aeiou"]
+        return result
+    return wrapper
